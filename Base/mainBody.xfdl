@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="mainBody" classname="mainBody" inheritanceid="" position="absolute 0 0 907 637" titletext="New Form" onload="mainBody_onload" style="background:dimgray;">
+    <Layouts>
+      <Layout>
+        <Button id="Button00" taborder="5" text="출근등록" position2="absolute l:379 w:100 t:415 h:35" positiontype="position2" style="background:olive;border:0px solid #979797ff ;color:aliceblue;align:middle;" onclick="Button00_onclick"/>
+        <Static id="Static01" text="사원명" position2="absolute l:294 w:100 t:172 h:35" positiontype="position2" style="color:white;align:center middle;font:나눔고딕 ExtraBold,10,bold;"/>
+        <Static id="Static02" text="사원번호" position2="absolute l:294 w:100 t:224 h:35" positiontype="position2" style="color:white;align:center middle;font:나눔고딕 ExtraBold,10,bold;"/>
+        <Static id="Static03" text="부서명" position2="absolute l:294 w:100 t:287 h:35" positiontype="position2" style="color:white;align:center middle;font:나눔고딕 ExtraBold,10,bold;"/>
+        <Static id="Static04" text="직급" position2="absolute l:294 w:100 t:345 h:35" positiontype="position2" style="color:white;align:center middle;font:나눔고딕 ExtraBold,10,bold;"/>
+        <Edit id="empName" taborder="1" readonly="true" oneditclick="empName_oneditclick" position2="absolute l:379 w:100 t:172 h:35" positiontype="position2" style="background:#ffffffff;border:1 solid #999999ff,1 solid #ccccccff,1 solid #ccccccff,1 solid #999999ff;align:center middle;"/>
+        <Edit id="empCode" taborder="2" readonly="true" position2="absolute l:379 w:100 t:228 h:35" positiontype="position2" style="background:#ffffffff;border:1 solid #999999ff,1 solid #ccccccff,1 solid #ccccccff,1 solid #999999ff;align:center middle;"/>
+        <Edit id="deptName" taborder="3" readonly="true" position2="absolute l:379 w:100 t:287 h:35" positiontype="position2" style="background:#ffffffff;border:1 solid #999999ff,1 solid #ccccccff,1 solid #ccccccff,1 solid #999999ff;align:center middle;"/>
+        <Edit id="pos" taborder="4" readonly="true" position2="absolute l:379 w:100 t:348 h:35" positiontype="position2" style="background:#ffffffff;border:1 solid #999999ff,1 solid #ccccccff,1 solid #ccccccff,1 solid #999999ff;align:center middle;"/>
+        <Static id="Static00" text="출근등록 하시겠습니까?" position2="absolute l:237 w:375 t:34 h:110" positiontype="position2" style="border:1px solid #b1b5b9b3 ;color:cornsilk;align:center middle;font:맑은 고딕,28,bold;" onclick="Static00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="goToWorkInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_NAME" type="STRING" size="256"/>
+          <Column id="TIME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript4.0"><![CDATA[
+function mainBody_onload(obj:Form, e:LoadEventInfo)
+{
+	g_empCode=gds_emp.getColumn(0,"EMP_CODE");
+	g_empName=gds_emp.getColumn(0,"EMP_NAME");
+	g_deptName=gds_emp.getColumn(0,"DEPT_NAME");
+	g_position=gds_emp.getColumn(0,"POSITION");	
+	
+	empName.value=g_empName;
+	empCode.value=g_empCode;
+	deptName.value=g_deptName;
+	pos.value=g_position;
+	
+	goToWorkInfo.setColumn(goToWorkInfo.rowposition,"EMP_CODE",g_empCode);
+	goToWorkInfo.setColumn(goToWorkInfo.rowposition,"ATTD_TYPE_CODE","ADC001");
+	goToWorkInfo.setColumn(goToWorkInfo.rowposition,"ATTD_TYPE_NAME","출근");
+}
+function Button00_onclick(obj:Button,  e:ClickEventInfo)
+{
+	trace(goToWorkInfo.getColumn(0,"EMP_CODE"));
+	//goToWorkInfo.setColumn(0,"TIME",?);
+}
+]]></Script>
+  </Form>
+</FDL>

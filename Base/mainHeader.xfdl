@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="mainHeader" classname="mainHeader" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" style="font:arial,11;" onload="mainHeader_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" text="INSA" position2="absolute l:7 w:189 t:8 h:81" positiontype="position2" style="border:2px solid #b1b5b9b3 ;align:center middle;font:SF레몬빙수,28,bold;"/>
+        <Button id="logout" taborder="2" text="LOGOUT" position2="absolute l:880 w:130 t:55 h:32" positiontype="position2" onclick="logout_onclick" style="background:linen;border:0 solid #979797ff ;color:crimson;bordertype:round 50 50 ;font:Do Hyeon,11;"/>
+        <Button id="home" taborder="1" text="HOME" onclick="home_onclick" position2="absolute l:880 w:130 t:15 h:32" positiontype="position2" style="background:linen;border:0px solid #979797ff ;color:black;bordertype:round 50 50 ;font:Do Hyeon,11;"/>
+        <Menu id="Menu00" taborder="0" position2="absolute l:215 w:634 t:16 h:62" positiontype="position2" innerdataset="@gds_menu" captioncolumn="MENU_NAME" idcolumn="MENU_CODE" levelcolumn="MENU_LV" style="itemalign:center middle;font:Do Hyeon,14,antialias;" onmenuclick="Menu00_onmenuclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript4.0"><![CDATA[function Menu00_onmenuclick(obj:Menu, e:MenuClickEventInfo)
+{
+	var sID = e.id
+	var sURL = gds_menu.lookup("MUNU_CODE",e.id,"MENU_URL");
+	var sTitle = gds_menu.lookup("MUNU_CODE",e.id,"MENU_NAME");
+	
+	if(sURL==null){
+		alert("메뉴설정을 해주세요");
+	}
+	if(sURL.length<1)
+	{
+		return;
+	}
+	gfn_Open(sID,sTitle,sURL);
+}
+function logout_onclick(obj:Button,  e:ClickEventInfo)
+{
+	application.mainframe.visible = false;
+	openLoginFormDialog("loginform","LoginForm","Base::loginForm.xfdl");
+}
+
+function home_onclick(obj:Button,  e:ClickEventInfo)
+{
+	gfn_Open("body","mainForm","Base::mainBody.xfdl");
+}
+]]></Script>
+  </Form>
+</FDL>

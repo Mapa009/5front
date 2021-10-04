@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="loginForm" classname="loginForm" inheritanceid="" position="absolute 0 0 400 350" titletext="New Form" style="background:gainsboro;bordertype:normal 100 0 ;font:@HY견고딕,18,bold;">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" text="INSA XPLATFORM" position2="absolute l:55 w:290 t:33 h:86" positiontype="position2" style="background:snow;border:3px solid #b1b5b9b3 ;color:darkgray;bordertype:round 100 100 ;align:center middle;font:@SF레몬빙수,24,bold;"/>
+        <Static id="Static01" text="ID" position2="absolute l:77 w:94 t:172 h:33" positiontype="position2" style="color:snow;font:@카페24 써라운드,14,bold;cursor:auto;shadow:drop 2,2 1 black;"/>
+        <Static id="Static02" text="PW" position2="absolute l:77 w:94 t:240 h:33" positiontype="position2" style="color:snow;font:카페24 써라운드,14,bold;shadow:drop 2,2 1 black;"/>
+        <Edit id="empName" taborder="1" position2="absolute l:176 w:167 t:165 h:43" positiontype="position2" value="정성환" style="caretcolor:antiquewhite;color:steelblue;align:center;font:배달의민족 주아,16;cursor:pointer;" oneditclick="empName_oneditclick" onkeydown="empName_onkeydown"/>
+        <Edit id="empCode" taborder="1" position2="absolute l:176 w:167 t:235 h:43" positiontype="position2" value="A490081" style="color:steelblue;align:center;font:배달의민족 주아,16;cursor:pointer;" onkeydown="empCode_onkeydown"/>
+        <Button id="loginBtn" taborder="1" text="LOGIN" position2="absolute l:306 w:78 t:312 h:24" positiontype="position2" style="background:snow;border:0px solid #979797ff ;color:steelblue;font:Do Hyeon,12;" onclick="LoginBtn_onclick"/>
+        <Button id="cancleBtn" taborder="1" text="CANCLE" position2="absolute l:25 w:78 t:312 h:24" positiontype="position2" style="background:snow;border:0px solid #979797ff ;color:steelblue;font:Do Hyeon,12;" onclick="CancleBtn_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript4.0"><![CDATA[
+function CancleBtn_onclick(obj:Button,  e:ClickEventInfo)
+{
+	close();
+}
+
+
+function LoginBtn_onclick(obj:Button,  e:ClickEventInfo)
+{
+	if(empName.text.length==0||empCode.text.length==0)
+	{
+		alert("사원명과 사원코드를 입력해주세요.");
+		return;
+	}
+	transaction(
+		 "login"
+		 ,"DataURL::login"
+		 ,""
+		 ,"gds_emp=gds_emp"
+		 ,"empCode='"+empCode.value+"' empName='"+empName.value+"'"
+		 ,"fn_callback"
+		 ,false  //비동기 여부 
+	);
+}
+
+function empCode_onkeydown(obj:Edit, e:KeyEventInfo)
+{
+	if(e.keycode==13)
+	{
+		loginBtn.click();
+	}
+}
+
+function fn_callback(trID,ErrorCode,ErrorMsg){
+	if(trID=="login")
+	{
+		if(ErrorCode<0)
+		{
+			alert(ErrorMsg);
+		}
+		else
+		{
+			transaction(
+				 "Menu"
+				 ,"DataURL::base/menuList"
+				 ,""
+				 ,"gds_menu=gds_menu"
+				 ,""
+				 ,"fnMenu_callback"
+				 ,false  //비동기 여부 
+			);
+		}
+	}
+}
+function fnMenu_callback(trID,ErrorCode,ErrorMsg){
+	if(trID=="Menu")
+	{
+		if(ErrorCode<0)
+		{
+			alert(ErrorMsg);
+			return;
+		}
+		else
+		{
+			/*var rc = gds_menu.rowcount;
+			var cc = gds_menu.colcount;
+			
+			for(var i=0;i<rc;i++)
+			{
+				for(var k=0;k<cc;k++){
+					trace(gds_menu.getColumn(i,k));
+				}
+				
+			}*/
+			//Dataset의 컬럼위치와 받아오는 컬럼의 위치가 동일해야됨
+			gfn_Open("body","MainForm","Base::mainBody.xfdl");
+			application.mainframe.visible = true;
+			close();
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

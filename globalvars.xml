@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalVariables>
+  <Dataset id="gds_emp">
+    <ColumnInfo>
+      <Column id="EMP_CODE" type="STRING" size="256"/>
+      <Column id="EMP_NAME" type="STRING" size="256"/>
+      <Column id="BIRTHDATE" type="STRING" size="256"/>
+      <Column id="GENDER" type="STRING" size="256"/>
+      <Column id="MOBILE_NUMBER" type="STRING" size="256"/>
+      <Column id="ADDRESS" type="STRING" size="256"/>
+      <Column id="DETAIL_ADDRESS" type="STRING" size="256"/>
+      <Column id="POST_NUMBER" type="STRING" size="256"/>
+      <Column id="EMAIL" type="STRING" size="256"/>
+      <Column id="LAST_SCHOOL" type="STRING" size="256"/>
+      <Column id="IMG_EXTEND" type="STRING" size="256"/>
+      <Column id="DEPT_NAME" type="STRING" size="256"/>
+      <Column id="POSITION_NAME" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Dataset id="gds_menu">
+    <ColumnInfo>
+      <Column id="MENU_CODE" type="STRING" size="256"/>
+      <Column id="MENU_NAME" type="STRING" size="256"/>
+      <Column id="MENU_URL" type="STRING" size="256"/>
+      <Column id="MENU_LV" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+</GlobalVariables>
