@@ -77,16 +77,7 @@ function fnMenu_callback(trID,ErrorCode,ErrorMsg){
 		}
 		else
 		{
-			/*var rc = gds_menu.rowcount;
-			var cc = gds_menu.colcount;
 			
-			for(var i=0;i<rc;i++)
-			{
-				for(var k=0;k<cc;k++){
-					trace(gds_menu.getColumn(i,k));
-				}
-				
-			}*/
 			//Dataset의 컬럼위치와 받아오는 컬럼의 위치가 동일해야됨
 			gfn_Open("body","MainForm","Base::mainBody.xfdl");
 			application.mainframe.visible = true;

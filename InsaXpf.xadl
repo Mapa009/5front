@@ -10,7 +10,7 @@
             <ChildFrame id="ChildFrame0" showtitlebar="false" style="background:beige;" formurl="Base::mainHeader.xfdl"/>
             <HFrameSet id="HFrameSet0" separatesize="200,*">
               <Frames>
-                <ChildFrame id="body" showtitlebar="false" style="background:burlywood;" formurl="Base::mainSidebar.xfdl"/>
+                <ChildFrame id="body" showtitlebar="false" style="background:burlywood;" formurl="Base::mainSidebar.xfdl" resizable="false" dragmovetype="normal"/>
                 <FrameSet id="FrameSet0"/>
               </Frames>
             </HFrameSet>
@@ -45,7 +45,6 @@ function gfn_Open(sID, sTitle, sURL)
 	var oFS = application.mainframe.VFrameSet0.HFrameSet0.FrameSet0;
 	//var oCF=new ChildFrame(sID,0,1160,680);
 	oFS.removeChild(sID);
- 
 	application.mainframe.showcascadetitletext = false;
 	application.mainframe.titletext=sTitle;
        //동적으로 화면 생성하기    객체아이디, 좌표
