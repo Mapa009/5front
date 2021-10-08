@@ -36,11 +36,17 @@
   </Components>
   <Services>
     <Service prefixid="Base" type="form" url="./Base/" version="0" communicationversion="0"/>
-    <Service prefixid="DataURL" type="form" url="http://localhost" version="0" communicationversion="0"/>
-    <Service prefixid="Attendence" type="form" url="./Attendence/" version="0" communicationversion="0"/>
+    <Service prefixid="DataURL" type="form" url="http://localhost/" version="0" communicationversion="0"/>
+    <Service prefixid="Attendance" type="form" url="./Attendence/" version="0" communicationversion="0"/>
     <Service prefixid="Certificate" type="form" url="./Certificate/" version="0" communicationversion="0"/>
     <Service prefixid="Emp" type="form" url="./Emp/" version="0" communicationversion="0"/>
     <Service prefixid="Salary" type="form" url="./Salary/" version="0" communicationversion="0"/>
+    <Service prefixid="lib" type="form" url="./lib/" version="0" communicationversion="0"/>
+    <Service prefixid="svcEmp" type="form" url="http://localhost/emp/" version="0" communicationversion="0"/>
+    <Service prefixid="svcAttendance" type="form" url="http://localhost/attendance/" version="0" communicationversion="0"/>
+    <Service prefixid="svcBase" type="form" url="http://localhost/base/" version="0" communicationversion="0"/>
+    <Service prefixid="svcCertificate" type="form" url="http://localhost/certificate/" version="0" communicationversion="0"/>
+    <Service prefixid="svcSalary" type="form" url="http://localhost/salary/" version="0" communicationversion="0"/>
   </Services>
   <Update/>
 </TypeDefinition>

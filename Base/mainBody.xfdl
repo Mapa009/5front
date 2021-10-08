@@ -16,17 +16,7 @@
         <Static id="Static00" text="출근등록 하시겠습니까?" position2="absolute l:237 w:375 t:34 h:110" positiontype="position2" style="border:1px solid #b1b5b9b3 ;color:cornsilk;align:center middle;font:맑은 고딕,28,bold;" onclick="Static00_onclick"/>
       </Layout>
     </Layouts>
-    <Objects>
-      <Dataset id="goToWorkInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
-        <ColumnInfo>
-          <Column id="EMP_CODE" type="STRING" size="256"/>
-          <Column id="APPLY_DAY" type="STRING" size="256"/>
-          <Column id="ATTD_TYPE_CODE" type="STRING" size="256"/>
-          <Column id="ATTD_TYPE_NAME" type="STRING" size="256"/>
-          <Column id="TIME" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-    </Objects>
+    <Objects/>
     <Bind/>
     <Script type="xscript4.0"><![CDATA[
 function mainBody_onload(obj:Form, e:LoadEventInfo)
@@ -41,15 +31,59 @@ function mainBody_onload(obj:Form, e:LoadEventInfo)
 	deptName.value=g_deptName;
 	pos.value=g_position;
 	
-	goToWorkInfo.setColumn(goToWorkInfo.rowposition,"EMP_CODE",g_empCode);
-	goToWorkInfo.setColumn(goToWorkInfo.rowposition,"ATTD_TYPE_CODE","ADC001");
-	goToWorkInfo.setColumn(goToWorkInfo.rowposition,"ATTD_TYPE_NAME","출근");
+	gds_dayAttdInit();
 }
 function Button00_onclick(obj:Button,  e:ClickEventInfo)
 {
-	trace(goToWorkInfo.getColumn(0,"EMP_CODE"));
-	//goToWorkInfo.setColumn(0,"TIME",?);
+	var date = new Date(); 
+	var year = date.getFullYear(); 
+	var month = new String(date.getMonth()+1); 
+	var day = new String(date.getDate());
+	
+	var applyDay = year+"/"+month+"/"+day;
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	if(minutes<10){
+		minutes = 0+""+minutes;
+	}
+	
+	var time = hours+""+minutes;
+	
+	gds_dayAttd.setColumn(gds_dayAttd.rowposition,"APPLY_DAY",applyDay);
+	gds_dayAttd.setColumn(gds_dayAttd.rowposition,"TIME",time);
+	transaction("dayAttd",
+				"DataURL::attendance/dayAttendance",
+				"gds_dayAttd=gds_dayAttd",
+				"",
+				"",
+				"fn_callback");
 }
-]]></Script>
+function fn_callback(trID, ErrorCode, ErrorMsg){
+	if(trID=="dayAttd")
+	{
+		if(ErrorCode<0)
+		{
+			alert(ErrorMsg);
+			gds_dayAttdInit();
+		}
+		else
+		{
+			alert("출근등록성공");
+		}
+	}
+}
+
+function gds_dayAttdInit(){
+	var rowCount = gds_dayAttd.getRowCount();
+	
+	if(rowCount>0){
+		gds_dayAttd.clearData();
+	}
+	
+	gds_dayAttd.addRow();
+	gds_dayAttd.setColumn(gds_dayAttd.rowposition,"EMP_CODE",g_empCode);
+	gds_dayAttd.setColumn(gds_dayAttd.rowposition,"ATTD_TYPE_CODE","ADC001");
+	gds_dayAttd.setColumn(gds_dayAttd.rowposition,"ATTD_TYPE_NAME","출근");
+}]]></Script>
   </Form>
 </FDL>
