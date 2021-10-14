@@ -1,48 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="travel" classname="travel" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" onload="travel_onload" style="background:#333333ff;color:#fa5252ff;">
+  <Form id="travel" classname="travel" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" onload="travel_onload" style="background:#f8f8f8ff;color:#fa5252ff;">
     <Layouts>
       <Layout>
         <Tab id="Tab" taborder="0" position2="absolute l:105 w:794 t:78 h:497" positiontype="position2" tabindex="0" scrollbars="autoboth" style="background:transparent;color:white;font:나눔고딕 ExtraBold,10,bold antialias; :selected {color:#5d5d5dff;}">
           <Tabpages>
-            <Tabpage id="tabpage1" text="출장/교육 신청" style="anchor:default;background:gray;">
+            <Tabpage id="tabpage1" text="출장/교육 신청" style="anchor:default;background:#eaeaeaff;">
               <Layouts>
                 <Layout width="776" height="476">
-                  <Static id="Static00" text="출장/교육 구분" onclick="Tab00_tabpage1_Static00_onclick" position2="absolute l:238 w:107 t:52 h:34" positiontype="position2" style="border:3px solid #b1b5b9b3 ;color:white;align:center;font:나눔고딕,11,bold;"/>
+                  <Static id="Static00" text="출장/교육 구분" onclick="Tab00_tabpage1_Static00_onclick" position2="absolute l:238 w:127 t:47 h:42" positiontype="position2" style="background:#5d5d5dff;border:3px solid #5d5d5dff ;color:white;align:center;font:나눔고딕,11,bold;"/>
                   <Edit id="selectt_ravel" taborder="1" position2="absolute l:375 w:175 t:53 h:31" positiontype="position2" style="background:white;align:center;font:나눔고딕,11,bold;" oneditclick="Tab_tabpage1_selectt_ravel_oneditclick"/>
-                  <Static id="Static01" text="신청자" position2="absolute l:98 w:121 t:132 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
-                  <Static id="Static02" text="부서" position2="absolute l:98 w:121 t:173 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
-                  <Static id="Static03" text="종료시간" position2="absolute l:375 w:121 t:300 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
-                  <Static id="Static04" text="시작일" position2="absolute l:98 w:121 t:214 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
-                  <Static id="Static06" text="시작시간" position2="absolute l:98 w:121 t:300 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
-                  <Static id="Static08" text="사유" position2="absolute l:98 w:121 t:337 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
-                  <Static id="Static09" text="직급" position2="absolute l:375 w:121 t:173 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
-                  <Static id="Static10" text="종료일" position2="absolute l:375 w:121 t:214 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static01" text="신청자" position2="absolute l:110 w:79 t:132 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static02" text="부서" position2="absolute l:110 w:79 t:172 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static03" text="종료시간" position2="absolute l:390 w:80 t:300 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static04" text="시작일" position2="absolute l:110 w:79 t:212 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static06" text="시작시간" position2="absolute l:110 w:79 t:292 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static08" text="사유" position2="absolute l:110 w:79 t:332 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static09" text="직급" position2="absolute l:390 w:80 t:172 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;color:#3f3f3fb3;align:center;font:나눔고딕,9,bold;"/>
+                  <Static id="Static10" text="종료일" position2="absolute l:390 w:80 t:214 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
                   <Edit id="travel_emp" taborder="1" position2="absolute l:193 w:174 t:132 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;"/>
                   <Edit id="travel_position" taborder="1" position2="absolute l:473 w:174 t:173 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;"/>
-                  <Edit id="travel_cause" taborder="1" position2="absolute l:193 w:174 t:337 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;"/>
+                  <Edit id="travel_cause" taborder="1" position2="absolute l:193 w:174 t:334 h:29" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;"/>
                   <Edit id="travel_dept" taborder="1" position2="absolute l:193 w:174 t:173 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;"/>
-                  <Calendar id="travel_startD" taborder="1" position2="absolute l:193 w:173 t:218 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;" dateformat="yyyy-MM-dd" value="null"/>
+                  <Calendar id="travel_startD" taborder="1" position2="absolute l:193 w:174 t:213 h:30" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;" dateformat="yyyy-MM-dd" value="null"/>
                   <Calendar id="travel_endD" taborder="1" position2="absolute l:473 w:173 t:218 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;" dateformat="yyyy-MM-dd" value="null" onchanged="Tab_tabpage1_travel_endD_onchanged"/>
                   <Button id="regist" taborder="1" text="신청" position2="absolute l:273 w:87 t:400 h:29" positiontype="position2" style="background:#5d5d5dff;color:white;align:center;font:나눔고딕,9,bold;" onclick="Tab_tabpage1_regist_onclick"/>
                   <Button id="cancel" taborder="1" text="취소" position2="absolute l:387 w:87 t:400 h:29" positiontype="position2" style="background:#5d5d5dff;color:white;align:center;font:나눔고딕,9,bold;" onclick="Tab_tabpage1_cancel_onclick"/>
-                  <MaskEdit id="travel_startT" taborder="1" type="string" mask="##:##" onkillfocus="Tab_tabpage1_travel_startT_onkillfocus" position2="absolute l:193 w:173 t:300 h:29" positiontype="position2" style="background:white;align:center middle;font:나눔고딕,9;"/>
+                  <MaskEdit id="travel_startT" taborder="1" type="string" mask="##:##" onkillfocus="Tab_tabpage1_travel_startT_onkillfocus" position2="absolute l:193 w:174 t:294 h:30" positiontype="position2" style="background:white;align:center middle;font:나눔고딕,9;"/>
                   <MaskEdit id="travel_endT" taborder="1" type="string" mask="##:##" onkillfocus="Tab_tabpage1_travel_endT_onkillfocus" position2="absolute l:473 w:173 t:300 h:29" positiontype="position2" style="background:white;align:center middle;font:나눔고딕,9;"/>
-                  <Edit id="travel_day" taborder="1" position2="absolute l:193 w:174 t:265 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;"/>
-                  <Static id="Static07" text="일수" position2="absolute l:98 w:121 t:261 h:31" positiontype="position2" style="color:white;align:center;font:나눔고딕,9,bold;"/>
+                  <Edit id="travel_day" taborder="1" position2="absolute l:193 w:174 t:255 h:27" positiontype="position2" style="background:white;align:center;font:나눔고딕,9;"/>
+                  <Static id="Static07" text="일수" position2="absolute l:110 w:79 t:252 h:31" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
                 </Layout>
               </Layouts>
             </Tabpage>
-            <Tabpage id="tabpage2" text="출장/교육 조회" style="anchor:default;background:gray;">
+            <Tabpage id="tabpage2" text="출장/교육 조회" style="anchor:default;background:beige;">
               <Layouts>
                 <Layout width="776" height="457">
-                  <Static id="Static00" text="조회범위 선택" position2="absolute l:281 w:214 t:36 h:38" positiontype="position2" style="border:3px solid #b1b5b9b3 ;color:white;align:center;font:HY헤드라인M,12;"/>
-                  <Static id="Static01" text="구분" position2="absolute l:176 w:81 t:88 h:25" positiontype="position2" style="border:3px solid #b1b5b9b3 ;color:white;align:center;font:HY헤드라인M,9;"/>
-                  <Edit id="selectTravel" taborder="1" position2="absolute l:281 w:159 t:88 h:25" positiontype="position2" oneditclick="Tab_tabpage2_selectTravel_oneditclick" style="background:white;align:center;"/>
-                  <Static id="Static02" text="기간" position2="absolute l:176 w:81 t:128 h:25" positiontype="position2" style="border:3px solid #b1b5b9b3 ;color:white;align:center;font:HY헤드라인M,9;"/>
-                  <Button id="search_restAttdList_Btn" taborder="1" text="조회하기" position2="absolute l:281 w:92 t:180 h:26" positiontype="position2" style="background:black;color:white;font:HY헤드라인M,9;" onclick="Tab_tabpage2_search_restAttdList_Btn_onclick"/>
-                  <Button id="delete_restAttd_Btn" taborder="1" text="삭제하기" position2="absolute l:403 w:92 t:180 h:26" positiontype="position2" style="background:black;color:white;font:HY헤드라인M,9;" onclick="Tab_tabpage2_delete_restAttd_Btn_onclick"/>
+                  <Static id="Static00" text="조회범위 선택" position2="absolute l:281 w:214 t:36 h:38" positiontype="position2" style="background:#e4f7baff;border:3px solid #b1b5b9b3 ;align:center;font:HY헤드라인M,12;"/>
+                  <Static id="Static01" text="구분" position2="absolute l:176 w:81 t:88 h:25" positiontype="position2" style="background:#e4f7baff;border:3px solid #b1b5b9b3 ;align:center;font:HY헤드라인M,9;"/>
+                  <Edit id="selectTravel" taborder="1" position2="absolute l:276 w:162 t:88 h:25" positiontype="position2" oneditclick="Tab_tabpage2_selectTravel_oneditclick" style="background:white;align:center;"/>
+                  <Static id="Static02" text="기간" position2="absolute l:176 w:81 t:128 h:25" positiontype="position2" style="background:#e4f7baff;border:3px solid #b1b5b9b3 ;align:center;font:HY헤드라인M,9;"/>
+                  <Button id="search_restAttdList_Btn" taborder="1" text="조회하기" position2="absolute l:281 w:92 t:180 h:26" positiontype="position2" style="background:#cef279ff;color:navy;font:HY헤드라인M,9;" onclick="Tab_tabpage2_search_restAttdList_Btn_onclick" wordwrap="word"/>
+                  <Button id="delete_restAttd_Btn" taborder="1" text="삭제하기" position2="absolute l:403 w:92 t:180 h:26" positiontype="position2" style="background:#cef279ff;color:navy;font:HY헤드라인M,9;" onclick="Tab_tabpage2_delete_restAttd_Btn_onclick"/>
                   <Grid id="Grid00" taborder="1" binddataset="ds_travelList" useinputpanel="false" autofittype="col" position2="absolute l:60 w:657 t:223 h:221" positiontype="position2" style="align:center;font:맑은 고딕 Semilight,9,antialias;" onheadclick="grd_output_onheadclick" cellclickbound="cell">
                     <Formats>
                       <Format id="default">
@@ -111,12 +111,11 @@
           <Column id="REQUEST_DATE" type="STRING" size="256"/>
           <Column id="START_DATE" type="STRING" size="256"/>
           <Column id="END_DATE" type="STRING" size="256"/>
-          <Column id="NUMBER_OF_DAYS" type="STRING" size="256"/>
+          <Column id="NUMBER_OF_DAYS" type="INT" size="256"/>
           <Column id="CAUSE" type="STRING" size="256"/>
           <Column id="APPLOVAL_STATUS" type="STRING" size="256"/>
           <Column id="START_TIME" type="STRING" size="256"/>
           <Column id="END_TIME" type="STRING" size="256"/>
-          <Column id="REST_ATTD_CODE" type="STRING" size="256"/>
         </ColumnInfo>
         <Rows>
           <Row/>
@@ -131,7 +130,7 @@
           <Column id="REQUEST_DATE" type="STRING" size="256"/>
           <Column id="START_DATE" type="STRING" size="256"/>
           <Column id="END_DATE" type="STRING" size="256"/>
-          <Column id="NUMBER_OF_DAYS" type="STRING" size="256"/>
+          <Column id="NUMBER_OF_DAYS" type="INT" size="256"/>
           <Column id="START_TIME" type="STRING" size="256"/>
           <Column id="END_TIME" type="STRING" size="256"/>
           <Column id="CAUSE" type="STRING" size="256"/>
@@ -182,8 +181,7 @@ function Tab_tabpage1_selectt_ravel_oneditclick(obj:Edit,  e:EditClickEventInfo)
 {   
 	g_codeNumber="CO-08";
 	
-	 dialog(   
-			   "detailCodeList",   // 생성될 ChildFrame의 이름
+	 dialog(   "detailCodeList",   // 생성될 ChildFrame의 이름
 			   "Base::codeDialog.xfdl",   // 로딩한 폼의 URL
 			   MainFrame,   // ParentFrame
                null,   // ChildFrame에 추가될 변수 리스트 {변수명:변수값, 변수명:변수값}
@@ -216,12 +214,13 @@ function Tab_tabpage1_travel_endD_onchanged(obj:Calendar, e:ChangeEventInfo)
 	}
 	
 	transaction(
-				"holidayID",
-				"svcBase::findWeekDayCount",
-				"",//서<클
-				"ds_weekdayCount=ds_dayCount",//클<서
-				"startDate='"+Tab.tabpage1.travel_startD.value+"' endDate='"+Tab.tabpage1.travel_endD.value+"'",
-				"fn_callbackk");
+		"holidayID",
+		"svcBase::findWeekDayCount",
+		"",//서<클
+		"ds_weekdayCount=ds_dayCount",//클<서
+		"startDate='"+Tab.tabpage1.travel_startD.value+"' endDate='"+Tab.tabpage1.travel_endD.value+"'",
+		"fn_callbackk"
+	);
 }
 
 
@@ -278,6 +277,7 @@ if(trID=="holidayID"){
 //신청
 function Tab_tabpage1_regist_onclick(obj:Button,  e:ClickEventInfo)
 {
+//ds_travel.setColumn(0,"REST_ATTD_CODE","TEST");
 
 trace("1:"+ds_travel.getColumn(0,"EMP_CODE"));
 trace("2:"+ds_travel.getColumn(0,"REST_TYPE_CODE"));
@@ -290,9 +290,7 @@ trace("8:"+ds_travel.getColumn(0,"CAUSE"));
 trace("9:"+ds_travel.getColumn(0,"APPLOVAL_STATUS"));
 trace("10:"+ds_travel.getColumn(0,"START_TIME"));
 trace("11:"+ds_travel.getColumn(0,"END_TIME"));
-
-ds_travel.setColumn(0,"REST_ATTD_CODE","test");
-
+//trace("12:"+ds_travel.getColumn(0,"REST_ATTD_CODE"));
 
  
  if(Tab.tabpage1.selectt_ravel.value==null){
@@ -304,8 +302,7 @@ ds_travel.setColumn(0,"REST_ATTD_CODE","test");
 			return;
  }else{
  
-	transaction(
-				"travelID",
+	transaction("travelID",
 				"svcAttendance::registRestAttd",
 				"ds_restAttd=ds_travel",//서<클
 				"",//클<서
@@ -375,8 +372,7 @@ function Tab_tabpage2_search_restAttdList_Btn_onclick(obj:Button,  e:ClickEventI
  trace(Tab.tabpage2.search_endD.value);
 
  
-	transaction(
-				"findBreakID",
+	transaction("findBreakID",
 				"svcAttendance::findRestAttdList",
 				"",
 				"ds_travelList=ds_restAttd",
@@ -403,8 +399,7 @@ function Tab_tabpage2_delete_restAttd_Btn_onclick(obj:Button,  e:ClickEventInfo)
 		var status=ds_travelList.getColumn(i,"STATUS");
 		
 		if(status==1){
-		transaction(
-					"deleteAtteID",
+		transaction("deleteAtteID",
 					"svcAttendance::removeRestAttdList",
 					"ds_restAttd=ds_travelList:u",
 					"",
