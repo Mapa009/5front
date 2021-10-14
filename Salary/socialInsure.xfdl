@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="socialInsure" classname="socialInsure" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" onload="socialInsure_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" position2="absolute l:40 w:940 t:32 h:79" positiontype="position2" text="Div00">
+          <Layouts>
+            <Layout width="940" height="57">
+              <Static id="Static00" text="사회보험 환경등록" position2="absolute l:71 w:172 t:16 h:39" positiontype="position2" style="font:돋움,14,bold;"/>
+              <Static id="Static01" text="귀속연도" position2="absolute l:423 w:136 t:16 h:44" positiontype="position2" style="font:돋움,14,bold;"/>
+              <Edit id="yearBox" taborder="1" position2="absolute l:538 w:229 t:16 h:45" positiontype="position2" value="2021"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" position2="absolute l:45 w:946 t:131 h:594" positiontype="position2" text="Div01">
+          <Layouts>
+            <Layout>
+              <Grid id="Grid00" taborder="0" useinputpanel="false" position2="absolute l:14 w:264 t:41 h:451" positiontype="position2" binddataset="ds_socialInsureList">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="115"/>
+                      <Column size="145"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="건강보험부담율"/>
+                      <Cell col="1" text="장기요양보험율"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:HEALTHINSURERATES"/>
+                      <Cell col="1" text="bind:LONGTERMCARERATE"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Tab id="Tab00" taborder="1" position2="absolute l:392 w:517 t:55 h:418" positiontype="position2" tabindex="0" scrollbars="autoboth">
+                <Tabpages>
+                  <Tabpage id="tabpage1" text="tabpage1"/>
+                  <Tabpage id="tabpage2" text="tabpage2"/>
+                  <Tabpage id="tabpage3" text="tabpage3"/>
+                </Tabpages>
+              </Tab>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_socialInsureList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ATTRIBUTIONYEAR" type="STRING" size="256"/>
+          <Column id="HEALTHINSURERATES" type="STRING" size="256"/>
+          <Column id="LONGTERMCARERATE" type="STRING" size="256"/>
+          <Column id="NATIONPENISIONRATES" type="STRING" size="256"/>
+          <Column id="TEACHPENISIONRATES" type="STRING" size="256"/>
+          <Column id="EMPINSURERATES" type="STRING" size="256"/>
+          <Column id="WRKINSURERATES" type="STRING" size="256"/>
+          <Column id="JOBSTABILRATES" type="STRING" size="256"/>
+          <Column id="VOCACOMPETENCYRATES" type="STRING" size="256"/>
+          <Column id="INDUSTINSURERATES" type="STRING" size="256"/>
+          <Column id="INDUSTINSURECHARRATES" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[//로딩시 
+function socialInsure_onload(obj:Form, e:LoadEventInfo)
+{ 
+	trace(Div00.yearBox.value);
+	
+	transaction(
+				"socialInsureYEAR"   
+				,"svcSalary::findsocialInsure"
+				,""
+				,"ds_socialInsureList=ds_socialInsure"
+				,"Year='"+Div00.yearBox.value+"'"
+				,"fn_callback"
+	);
+}
+
+function fn_callback(trID,ErrorCode,ErrorMsg){
+	if(trID=="baseExtID"){
+		if(ErrorCode!=0){
+			alert("로드실패");
+		}
+	}
+	if(trID=="submitID"){
+		if(ErrorCode!=0){
+			alert("변경실패");
+		}else{
+			alert("확정되었습니다.");
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

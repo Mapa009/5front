@@ -65,7 +65,7 @@ function baseDeductionManage_onload(obj:Form, e:LoadEventInfo)
 { 
 	transaction(
 				"deductionID"
-				,"svcSalary::findBaseDeductionList.do"
+				,"svcSalary::findBaseDeductionList"
 				,""
 				,"ds_baseDeductionList=ds_baseDeduction"
 				,""

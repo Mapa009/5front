@@ -53,6 +53,7 @@
           <Column id="POSITION" type="STRING" size="256"/>
           <Column id="BASE_SALARY" type="STRING" size="256"/>
           <Column id="HOBONG_RATIO" type="STRING" size="256"/>
+          <Column id="ALLOWANCE" type="STRING" size="256"/>
           <Column id="STATUS" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
@@ -62,7 +63,7 @@ function baseSalaryManage_onload(obj:Form, e:LoadEventInfo)
 { 
 		transaction(
 					 "baseSalaryID"
-					,"svcSalary::findBaseSalaryList.do"
+					,"svcSalary::findBaseSalaryList"
 					,""
 					,"ds_baseSalaryList=ds_baseSalary"
 					,""

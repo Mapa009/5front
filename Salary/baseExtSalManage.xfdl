@@ -57,7 +57,7 @@ function baseExtSalManage_onload(obj:Form, e:LoadEventInfo)
 { 
 	transaction(
 				"baseExtID"   
-				,"svcSalary::findBaseExtSalList.do"
+				,"svcSalary::findBaseExtSalList"
 				,""
 				,"ds_baseExtSalList=ds_baseExtSal"
 				,""
