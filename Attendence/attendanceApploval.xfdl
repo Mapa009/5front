@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="attendanceApploval" classname="attendanceApploval" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" style="background:#333333ff;color:#fa5252ff;">
+  <Form id="attendanceApploval" classname="attendanceApploval" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" style="background:#f8f8f8ff;color:#fa5252ff;">
     <Layouts>
       <Layout>
-        <Tab id="Tab00" taborder="0" position2="absolute l:56 w:915 t:66 h:530" positiontype="position2" tabindex="0" scrollbars="autoboth" style="color:white;font:나눔고딕,10,bold;">
+        <Tab id="Tab00" taborder="0" position2="absolute l:56 w:915 t:66 h:530" positiontype="position2" tabindex="0" scrollbars="autoboth" style="color:#5d5d5dff;font:나눔고딕,10,bold;">
           <Tabpages>
-            <Tabpage id="tabpage1" text="결재승인관리" style="anchor:default;background:gray;">
+            <Tabpage id="tabpage1" text="결재승인관리" style="anchor:default;background:#eaeaeaff;">
               <Layouts>
                 <Layout>
-                  <Static id="Static00" text="조회부서" position2="absolute l:26 w:93 t:32 h:27" positiontype="position2" style="border:3px solid #b1b5b9b3 ;color:white;align:center;font:나눔고딕 ExtraBold,9,bold;"/>
-                  <Static id="Static01" text="신청일자" position2="absolute l:293 w:93 t:32 h:27" positiontype="position2" style="border:3px solid #b1b5b9b3 ;color:white;align:center;font:나눔고딕 ExtraBold,9,bold;"/>
+                  <Static id="Static00" text="조회부서" position2="absolute l:26 w:93 t:32 h:27" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕 ExtraBold,9,bold;"/>
+                  <Static id="Static01" text="신청일자" position2="absolute l:293 w:93 t:32 h:27" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕 ExtraBold,9,bold;"/>
                   <Edit id="searchDeptName" taborder="1" position2="absolute l:133 w:146 t:32 h:27" positiontype="position2" oneditclick="Tab00_tabpage1_searchDeptName_oneditclick" style="align:center;font:나눔고딕 ExtraBold,9,bold;"/>
                   <Static id="Static03" text="-" position2="absolute l:571 w:21 t:32 h:25" positiontype="position2" style="align:center;font:Verdana,15,bold;"/>
                   <Button id="searchBtn" taborder="1" text="조회하기" position2="absolute l:769 w:104 t:32 h:25" positiontype="position2" style="background:#5d5d5dff;color:white;" onclick="Tab00_tabpage1_searchBtn_onclick"/>
@@ -20,11 +20,11 @@
                   <Button id="updateBtn" taborder="1" text="확정" position2="absolute l:598 w:89 t:416 h:33" positiontype="position2" style="background:#5d5d5dff;color:white;" onclick="Tab00_tabpage1_updateBtn_onclick"/>
                   <Calendar id="startDate" taborder="1" dateformat="yyyy-MM-dd" position2="absolute l:416 w:147 t:27 h:34" positiontype="position2" style="align:center;font:나눔고딕 ExtraBold,9,bold;" oneditclick="Tab00_tabpage1_startDate_oneditclick"/>
                   <Calendar id="endDate" taborder="1" dateformat="yyyy-MM-dd" position2="absolute l:598 w:147 t:25 h:35" positiontype="position2" style="align:center;font:나눔고딕 ExtraBold,9,bold;"/>
-                  <Grid id="Grid00" taborder="1" binddataset="ds_restAttdList" useinputpanel="false" autofittype="col" cellclickbound="cell" onmousemove="Tab00_tabpage1_Grid00_onmousemove" onheadclick="Tab00_tabpage1_rejectBtn_onclick" position2="absolute l:12 w:872 t:80 h:314" positiontype="position2" tooltiptype="hover" style="align:center;">
+                  <Grid id="Grid00" taborder="1" binddataset="ds_restAttdList" useinputpanel="false" autofittype="col" cellclickbound="cell" onmousemove="Tab00_tabpage1_Grid00_onmousemove" onheadclick="grd_output_onheadclick" position2="absolute l:12 w:872 t:75 h:314" positiontype="position2" tooltiptype="hover" style="align:center;">
                     <Formats>
                       <Format id="default">
                         <Columns>
-                          <Column size="30"/>
+                          <Column size="22"/>
                           <Column size="59"/>
                           <Column size="67"/>
                           <Column size="86"/>
@@ -44,20 +44,20 @@
                           <Row size="24"/>
                         </Rows>
                         <Band id="head" style="background:#008040ff;">
-                          <Cell displaytype="checkbox" edittype="checkbox" style="background:#ffffffb3;" expr="0"/>
-                          <Cell col="1" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="사원명"/>
-                          <Cell col="2" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="근태구분명"/>
-                          <Cell col="3" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="근태구분코드"/>
-                          <Cell col="4" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="신청일자"/>
-                          <Cell col="5" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="시작일"/>
-                          <Cell col="6" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="종료일"/>
-                          <Cell col="7" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="시작시간"/>
-                          <Cell col="8" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="종료시간"/>
-                          <Cell col="9" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="일수"/>
-                          <Cell col="10" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="경비" displayexpdec="0"/>
-                          <Cell col="11" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="사유"/>
-                          <Cell col="12" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="승인여부"/>
-                          <Cell col="13" displaytype="normal" style="background:#ffffffb3;font:나눔고딕,9;" text="반려사유"/>
+                          <Cell displaytype="checkbox" edittype="checkbox" expr="0"/>
+                          <Cell col="1" displaytype="normal" style="font:나눔고딕,9;" text="사원명"/>
+                          <Cell col="2" displaytype="normal" style="font:나눔고딕,9;" text="근태구분명"/>
+                          <Cell col="3" displaytype="normal" style="font:나눔고딕,9;" text="근태구분코드"/>
+                          <Cell col="4" displaytype="normal" style="font:나눔고딕,9;" text="신청일자"/>
+                          <Cell col="5" displaytype="normal" style="font:나눔고딕,9;" text="시작일"/>
+                          <Cell col="6" displaytype="normal" style="font:나눔고딕,9;" text="종료일"/>
+                          <Cell col="7" displaytype="normal" style="font:나눔고딕,9;" text="시작시간"/>
+                          <Cell col="8" displaytype="normal" style="font:나눔고딕,9;" text="종료시간"/>
+                          <Cell col="9" displaytype="normal" style="font:나눔고딕,9;" text="일수"/>
+                          <Cell col="10" displaytype="normal" style="font:나눔고딕,9;" text="경비" displayexpdec="0"/>
+                          <Cell col="11" displaytype="normal" style="font:나눔고딕,9;" text="사유"/>
+                          <Cell col="12" displaytype="normal" style="font:나눔고딕,9;" text="승인여부"/>
+                          <Cell col="13" displaytype="normal" style="font:나눔고딕,9;" text="반려사유"/>
                         </Band>
                         <Band id="body">
                           <Cell displaytype="checkbox" edittype="checkbox" text="bind:STATUS"/>
@@ -117,16 +117,16 @@ function Tab00_tabpage1_searchDeptName_oneditclick(obj:Edit,  e:EditClickEventIn
 {
 	g_codeNumber="CO-07"
 	
-	// application.dialog -> dialog와 동일
-				dialog(
-						 "detailCodeList"
+	application.dialog(
+						"detailCodeList"
 						,"Base::codeDialog.xfdl"
 						,MainFrame
 						,null
 						,""
 						,650
 						,350
-				);
+	
+	);
 	
 	Tab00.tabpage1.searchDeptName.value=g_detailCodeName;
 }
@@ -134,9 +134,9 @@ function Tab00_tabpage1_searchDeptName_oneditclick(obj:Edit,  e:EditClickEventIn
 //조회버튼 
 function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 {
-	startD = Tab00.tabpage1.startDate.value;
-	endD = Tab00.tabpage1.endDate.value;
-	searchDeptName = Tab00.tabpage1.searchDeptName.value;
+	startD=Tab00.tabpage1.startDate.value;
+	endD=Tab00.tabpage1.endDate.value;
+	searchDeptName=Tab00.tabpage1.searchDeptName.value;
 
 	if(searchDeptName==null){
 		alert("조회할 부서를 선택하세요.");
@@ -152,9 +152,9 @@ function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 	}else{
 		transaction(
 					"searchID",
-					"svcAttendance::attendanceApploval",
-					"", 								// 서버<-클라이언트
-					"ds_restAttdList=ds_restAttd", 		//클라이언트<-서버
+					"svcAttendance::attendanceApploval.do",
+					"", // XPLATFORM -> 서버
+					"ds_restAttdList=ds_restAttd", //XPLATFORM <- 서버
 					"deptName='"+g_detailCodeNumber+"' startDate='"+startD+"' endDate='"+endD+"'",
 					"fn_callback"
 				);
@@ -163,8 +163,7 @@ function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 
 //조회 콜백 
 function fn_callback(trID,ErrorCode,ErrorMsg){
-
-	if(trID=="searchID"){
+if(trID=="searchID"){
 	if(ErrorCode!=0){
 		alert("조회실패"+ErrorMsg);
 	}else{
@@ -267,8 +266,8 @@ function Tab00_tabpage1_rejectBtn_onclick(obj:Button,  e:ClickEventInfo)
 function Tab00_tabpage1_updateBtn_onclick(obj:Button,  e:ClickEventInfo)
 {
 	transaction(
-				 "modifyID"
-				,"svcAttendance::modifyRestAttdList"
+				"modifyID"
+				,"svcAttendance::modifyRestAttdList.do"
 				,"ds_restAttd=ds_restAttdList:u"
 				,""
 				,""
