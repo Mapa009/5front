@@ -4,9 +4,9 @@
   <Form id="powerManage" classname="powerManage" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" style="background:#f8f8f8ff;" onload="powerManage_onload">
     <Layouts>
       <Layout>
-        <Tab id="Tab" taborder="0" position2="absolute l:72 w:399 t:152 h:423" positiontype="position2" tabindex="0" scrollbars="autoboth" style="background:gray;color:white;font:나눔고딕,10,bold antialias; :selected {color:#5d5d5dff;}">
+        <Tab id="Tab" taborder="0" position2="absolute l:72 w:399 t:152 h:423" positiontype="position2" tabindex="0" scrollbars="autoboth" style="background:transparent;color:#e3e3e3ff;font:나눔고딕,10,bold antialias; :selected {color:#5d5d5dff;}">
           <Tabpages>
-            <Tabpage id="page1" text="부서명으로 사원 검색" style="anchor:default;background:gray;">
+            <Tabpage id="page1" text="부서명으로 사원 검색" style="anchor:default;background:#c8c8c870;">
               <Layouts>
                 <Layout width="132" height="376">
                   <Grid id="Grid00" taborder="1" binddataset="ds_emp" useinputpanel="false" autofittype="col" cellclickbound="cell" oncellclick="Tab00_tabpage1_Grid00_oncellclick" onheadclick="grd_output_onheadclick" position2="absolute l:19 w:344 t:84 h:289" positiontype="position2" style="align:center;font:맑은 고딕 Semilight,9,antialias;">
@@ -105,7 +105,7 @@
         </Tab>
         <Tab id="Tab00" taborder="1" position2="absolute l:574 w:357 t:107 h:511" positiontype="position2" tabindex="0" scrollbars="autoboth">
           <Tabpages>
-            <Tabpage id="tabpage1" text="권한" position="absolute 1 22 62 510" style="anchor:default;background:gray;">
+            <Tabpage id="tabpage1" text="권한" position="absolute 1 22 62 510" style="anchor:default;background:#c8c8c870;">
               <Layouts>
                 <Layout>
                   <Grid id="Grid00" taborder="0" useinputpanel="false" position2="absolute l:7 w:324 t:7 h:390" positiontype="position2" autofittype="col" cellclickbound="cell" binddataset="gds_groupAuthority" oncellclick="tabpage1_Grid00_celClicked">
@@ -173,8 +173,8 @@ var empCode;
 var rowNum;
 
 function powerManage_onload(obj:Form, e:LoadEventInfo)
-{ 
-	
+{
+	gds_groupAuthority.clear();
 }
 
 function Tab_tabpage1_btn_search_onclick(obj:Button,  e:ClickEventInfo)

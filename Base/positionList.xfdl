@@ -66,7 +66,7 @@ function positionList_onload(obj:Form, e:LoadEventInfo)
 				"positionID"
 				,"svcBase::findPositionList"
 				,""
-				,"ds_positionList=ds_baseSalary"
+				,"ds_positionList=ds_position"
 				,""
 				,"fn_callback"			
 	);
@@ -77,14 +77,19 @@ function positionList_onload(obj:Form, e:LoadEventInfo)
 function Tab00_tabpage1_Button01_onclick(obj:Button,  e:ClickEventInfo)
 {
 	ds_positionList.addRow();
-	ds_positionList.setColumn(ds_positionList.rowposition,"CODE_MENU","POS");
-	ds_positionList.setColumn(ds_positionList.rowposition,"CODE_NAME","insert");
+	ds_positionList.setColumn(ds_positionList.rowposition,"POSITION_CODE","POS");
+	ds_positionList.setColumn(ds_positionList.rowposition,"STATUS","insert");
 }
 
 //삭제버튼
 function Tab00_tabpage1_Button00_onclick(obj:Button,  e:ClickEventInfo)
 {
-	ds_positionList.setColumn(ds_positionList.rowposition,"STATUS","delete");
+	var status = ds_positionList.getColumn(ds_positionList.rowposition,"STATUS");
+	if(status=="insert"){
+		ds_positionList.deleteRow(ds_positionList.rowposition);
+	}else{
+		ds_positionList.setColumn(ds_positionList.rowposition,"STATUS","delete");
+	}
 }
 
 //저장버튼 
@@ -98,7 +103,7 @@ function Tab00_tabpage1_Button02_onclick(obj:Button,  e:ClickEventInfo)
 	transaction(
 				"submitID"
 				,"svcBase::modifyPosition"
-				,"ds_baseSalary=ds_positionList:u"
+				,"ds_position=ds_positionList:u"
 				,""
 				,""
 				,"fn_callback"

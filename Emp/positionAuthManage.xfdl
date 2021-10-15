@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="powerManage2" classname="powerManage2" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" style="background:#f8f8f8ff;">
+  <Form id="powerManage2" classname="powerManage2" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" style="background:#f8f8f8ff;" onload="powerManage2_onload">
     <Layouts>
       <Layout>
         <Tab id="Tab01" taborder="1" position2="absolute l:64 w:905 t:390 h:253" positiontype="position2" tabindex="0" scrollbars="autoboth">
@@ -21,24 +21,24 @@
             <Tabpage id="tabpage1" text="직급">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" binddataset="gds_position" useinputpanel="false" autofittype="col" position2="absolute l:12 w:204 t:7 h:246" positiontype="position2" style="align:center;font:맑은 고딕 Semilight,9,antialias;" oncellclick="Tab00_tabpage1_Grid00_oncellclick">
+                  <Grid id="Grid00" taborder="0" binddataset="ds_positionList" useinputpanel="false" autofittype="col" position2="absolute l:12 w:204 t:7 h:246" positiontype="position2" style="align:center;font:맑은 고딕 Semilight,9,antialias;" oncellclick="Tab00_tabpage1_Grid00_oncellclick" formats="&lt;Formats&gt;&#10;  &lt;Format id=&quot;default&quot;&gt;&#10;    &lt;Columns&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;      &lt;Col size=&quot;80&quot;/&gt;&#10;    &lt;/Columns&gt;&#10;    &lt;Rows&gt;&#10;      &lt;Row band=&quot;head&quot; size=&quot;24&quot;/&gt;&#10;      &lt;Row band=&quot;body&quot; size=&quot;24&quot;/&gt;&#10;    &lt;/Rows&gt;&#10;    &lt;Band id=&quot;head&quot;&gt;&#10;      &lt;Cell col=&quot;0&quot; disptype=&quot;normal&quot; text=&quot;POSITION_CODE&quot;/&gt;&#10;      &lt;Cell col=&quot;1&quot; disptype=&quot;normal&quot; text=&quot;POSITION_NAME&quot;/&gt;&#10;    &lt;/Band&gt;&#10;    &lt;Band id=&quot;body&quot;&gt;&#10;      &lt;Cell col=&quot;0&quot; disptype=&quot;normal&quot; text=&quot;bind:POSITION_CODE&quot;/&gt;&#10;      &lt;Cell col=&quot;1&quot; disptype=&quot;normal&quot; text=&quot;bind:POSITION_NAME&quot;/&gt;&#10;    &lt;/Band&gt;&#10;  &lt;/Format&gt;&#10;&lt;/Formats&gt;&#10;">
                     <Formats>
                       <Format id="default">
                         <Columns>
                           <Column size="80"/>
-                          <Column size="87"/>
+                          <Column size="80"/>
                         </Columns>
                         <Rows>
                           <Row size="24" band="head"/>
                           <Row size="24"/>
                         </Rows>
-                        <Band id="head" style="background:#008040ff;">
-                          <Cell style="background:#5d5d5dff;color:white;font:나눔고딕,9;" text="직급코드"/>
-                          <Cell col="1" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" text="직급명"/>
+                        <Band id="head">
+                          <Cell text="직급코드"/>
+                          <Cell col="1" text="직급명"/>
                         </Band>
                         <Band id="body">
-                          <Cell displaytype="text" edittype="text" style="align:center;font:나눔고딕,9;" text="bind:POSITION_CODE" mask="POS###" editlimit="6"/>
-                          <Cell col="1" displaytype="text" edittype="text" style="font:나눔고딕,9;" text="bind:POSITION"/>
+                          <Cell text="bind:POSITION_CODE"/>
+                          <Cell col="1" text="bind:POSITION"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -116,6 +116,15 @@
           <Column id="MONTH_SALARY" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_positionList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="POSITION_CODE" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
     </Objects>
     <InitValue>
       <Grid id="powerList" binddataset="ds_powerList"/>
@@ -123,7 +132,9 @@
     <Script type="xscript4.0"><![CDATA[var pos;
 
 function Tab00_tabpage1_Grid00_oncellclick(obj:Grid, e:GridClickEventInfo)
-{	pos=gds_position.getColumn(gds_position.rowposition,"POSITION");
+{	pos=ds_positionList.getColumn(ds_positionList.rowposition,"POSITION");
+	trace(e.row);
+	trace(ds_positionList.rowposition);
 	if(pos=='관리자'||pos=='인턴'){
 		alert('직급 '+pos+ '는(은) 권한설정할 수 없습니다.');
 		trace(pos)
@@ -171,8 +182,24 @@ function fn_callback(trID,ErrorCode,ErrorMsg){
 	else if(trID=="saveID"){
 		if(ErrorCode!=0){alert(ErrorMsg);}
 		else{alert('저장성공');}
+	}else if(trID=="searchPosition"){
+		if(ErrorCode!=0){
+			alert("실패");
+		}
 	}
 	
-}]]></Script>
+}
+function powerManage2_onload(obj:Form, e:LoadEventInfo)
+{
+	transaction(
+				"searchPosition"
+				,"svcBase::findPositionList"
+				,""
+				,"ds_positionList=ds_position"
+				,"position='"+pos+"'"
+				,"fn_callback"
+	);
+}
+]]></Script>
   </Form>
 </FDL>
