@@ -87,7 +87,7 @@
                         </Band>
                         <Band id="body">
                           <Cell displaytype="normal" style="align:center;" text="bind:APPLY_YEAR_MONTH"/>
-                          <Cell col="1" displaytype="number" style="align:center;" text="bind:SALARY" mask="###,##0" maskchar="0"/>
+                          <Cell col="1" displaytype="number" style="align:center;" text="bind:TOTAL_PAYMENT" mask="###,##0" maskchar="0"/>
                           <Cell col="2" displaytype="number" style="align:center;" text="bind:TOTAL_EXT_SAL" mask="###,##0" maskchar="0"/>
                           <Cell col="3" displaytype="number" style="align:center;" text="bind:TOTAL_PAYMENT" mask="###,##0" maskchar="0"/>
                           <Cell col="4" displaytype="number" style="align:center;" text="bind:TOTAL_DEDUCTION" mask="###,##0" maskchar="0"/>
@@ -249,7 +249,7 @@ function Tab1_monthSalary_monthSearchBtn_onclick(obj:Button,  e:ClickEventInfo)
  				"svcSalary::findMonthSalary",  
  				"",
  				"ds_MonthSalary=ds_MonthSalary ds_monthDeductionList=ds_monthDeductionList ds_monthExtSalList=ds_monthExtSalList",
- 				"empCode='"+g_empCode+"' applyYearMonth='"+Tab1.monthSalary.Calendar.text+"'",
+ 				"empCode="+g_empCode+" applyYearMonth="+Tab1.monthSalary.Calendar.text,
  				"fn_callback");
 	}
 }

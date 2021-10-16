@@ -282,7 +282,7 @@ function empList_oncellclick(obj:Grid, e:GridClickEventInfo)
 					"svcSalary::selectSalary", 
 					"",
 					"ds_monthSalary=ds_fullTimeSal",
-					"applyYearMonth2= "+yearMonth+"empCode="+empcode,
+					"applyYearMonth2="+yearMonth+" empCode="+empcode,
 					"fn_callback"
 					);
 	}
