@@ -122,7 +122,7 @@
 	//trace(dateDatastart+dateDataend);   //2020-09
 
 	transaction("monthSearchID",
-				"svcAttendance::findMonthAttdMgtList.do",
+				"svcAttendance::findMonthAttdMgtList",
 				"",
 				"ds_monthAttenMng=ds_monthAttenMng",
 				"applyYearMonth='"+Tab00.tabpage1.CalendarBtn.text+"'",

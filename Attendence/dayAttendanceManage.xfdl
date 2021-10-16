@@ -129,7 +129,7 @@ function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 	trace(Tab00.tabpage1.CalendarBtn.value);
 		transaction(
 		          "daySearchID"
-		          ,"svcAttendance::findDayAttdMgtList.do" // 여기 수정
+		          ,"svcAttendance::findDayAttdMgtList" // 여기 수정
 		          ,""
 		          ,"ds_dayAttenMng=ds_dayAttenMng" // 여기 수정
 		          ,"applyDay='"+Tab00.tabpage1.CalendarBtn.value+"'"
@@ -205,7 +205,7 @@ function finalizeBtn_onclick(obj:Button,  e:ClickEventInfo)
 	
 	transaction(  //일근태 조회 
 				"finalizeID"  
-				,"svcAttendance::findDayAttdMgtList.do"
+				,"svcAttendance::modifyDayAttdList"
 				,""
 				,"ds_dayAttenMng=ds_dayAttenMng"
 				,"applyDay='"+dateDataY+dateDataM+dateDataD+"'"  //여기 수정

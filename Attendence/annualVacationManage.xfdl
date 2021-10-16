@@ -10,7 +10,7 @@
               <Layouts>
                 <Layout width="922" height="489">
                   <Button id="searchBtn" taborder="0" text="조회하기" position2="absolute l:711 w:127 t:86 h:34" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" onclick="Tab00_tabpage1_searchBtn_onclick"/>
-                  <Static id="Static00" text="연차관리." onclick="Tab00_tabpage1_Static00_onclick" position2="absolute l:434 w:207 t:12 h:45" positiontype="position2" style="background:#5d5d5dff;border:3px solid #5d5d5dff ;color:white;align:center;font:나눔고딕 ExtraBold,14,bold;"/>
+                  <Static id="Static00" text="연차관리" onclick="Tab00_tabpage1_Static00_onclick" position2="absolute l:434 w:207 t:12 h:45" positiontype="position2" style="background:#5d5d5dff;border:3px solid #5d5d5dff ;color:white;align:center;font:나눔고딕 ExtraBold,14,bold;"/>
                   <Button id="finalize_annualVacation_btn" taborder="1" text="마감하기" position2="absolute l:367 w:127 t:421 h:34" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" onclick="Tab00_tabpage1_finalize_annualVacation_btn_onclick"/>
                   <Button id="cancel_annualVacation_btn" taborder="1" text="마감취소하기" position2="absolute l:543 w:127 t:421 h:34" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" onclick="Tab00_tabpage1_cancel_annualVacation_btn_onclick"/>
                   <Static id="Static01" text="적용년월" position2="absolute l:255 w:94 t:85 h:36" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,10,bold;"/>
