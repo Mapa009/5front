@@ -5,7 +5,7 @@
     <Layouts>
       <Layout>
         <Static id="Static00" text="상용직급여" position2="absolute l:18 w:266 t:23 h:81" positiontype="position2" style="align:center;font:Verdana,24,bold;"/>
-        <Grid id="monthTax" taborder="1" useinputpanel="false" position2="absolute l:728 w:280 t:223 h:323" positiontype="position2" binddataset="ds_monthSalary">
+        <Grid id="monthTax" taborder="1" useinputpanel="false" position2="absolute l:705 w:280 t:223 h:323" positiontype="position2" binddataset="ds_monthSalary">
           <Formats>
             <Format id="default">
               <Columns>
@@ -50,7 +50,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="empList" taborder="1" binddataset="ds_insaEmpSearch" useinputpanel="false" position2="absolute l:21 w:280 t:224 h:322" positiontype="position2" style="font:Verdana,9,antialias;" oncellclick="empList_oncellclick">
+        <Grid id="empList" taborder="1" binddataset="ds_insaEmpSearch" useinputpanel="false" position2="absolute l:45 w:280 t:224 h:322" positiontype="position2" style="font:Verdana,9,antialias;" oncellclick="empList_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -77,7 +77,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="monthSalary" taborder="1" useinputpanel="false" position2="absolute l:428 w:280 t:223 h:323" positiontype="position2" binddataset="ds_monthSalary">
+        <Grid id="monthSalary" taborder="1" useinputpanel="false" position2="absolute l:375 w:280 t:223 h:323" positiontype="position2" binddataset="ds_monthSalary">
           <Formats>
             <Format id="default">
               <Columns>
@@ -116,9 +116,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="Button01" taborder="1" text="마  감" position2="absolute l:314 w:97 t:311 h:49" positiontype="position2" style="color:coral;"/>
-        <Button id="Button02" taborder="1" text="마감취소" position2="absolute l:314 w:97 t:390 h:49" positiontype="position2" style="color:coral;"/>
-        <Combo id="Year" taborder="1" position2="absolute l:36 w:156 t:136 h:48" positiontype="position2" index="-1" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="Year_onitemchanged" style="font:Verdana,9,bold antialias;">
+        <Button id="finalizeButton" taborder="1" text="마  감" position2="absolute l:728 w:97 t:151 h:49" positiontype="position2" style="color:coral;" onclick="Button01_onclick"/>
+        <Button id="cancelBtn" taborder="1" text="마감취소" position2="absolute l:856 w:97 t:152 h:49" positiontype="position2" style="color:coral;"/>
+        <Combo id="Year" taborder="1" position2="absolute l:60 w:156 t:136 h:48" positiontype="position2" index="-1" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="Year_onitemchanged" style="font:Verdana,9,bold antialias;">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -152,7 +152,7 @@
             </Rows>
           </Dataset>
         </Combo>
-        <Combo id="Month" taborder="1" position2="absolute l:204 w:88 t:136 h:48" positiontype="position2" codecolumn="codecolumn" datacolumn="datacolumn" index="-1">
+        <Combo id="Month" taborder="1" position2="absolute l:228 w:88 t:136 h:48" positiontype="position2" codecolumn="codecolumn" datacolumn="datacolumn" index="-1">
           <Dataset id="innerdataset">
             <ColumnInfo>
               <Column id="codecolumn" size="256"/>
@@ -289,6 +289,38 @@ function empList_oncellclick(obj:Grid, e:GridClickEventInfo)
 	
 }
 
+function finalizeButton_onclick(obj:Button,  e:ClickEventInfo) //마감
+{
+	ds_monthSalary.applyChange(); //데이터셋 값 변경
+	ds_monthSalary.setColumn(ds_monthSalary.rowposition ,'FINALIZE_STATUS',"Y");
+	
+		alert(ds_monthSalary.getColumn(ds_monthSalary.rowposition,'FINALIZE_STATUS'));
+
+	
+  	transaction("finalizeID",
+  				"svcSalary::modifyMonthSalary",
+  				"ds_monthSalary=ds_monthSalary",
+  				"",
+  				"",
+  				"fn_callback");
+}
+
+
+function cancelBtn_onclick(obj:Button,  e:ClickEventInfo) //마감취소
+{
+	ds_monthSalary.applyChange(); //데이터셋 값 변경
+	ds_monthSalary.setColumn(ds_monthSalary.rowposition ,'FINALIZE_STATUS',"N");
+		alert(ds_monthSalary.getColumn(ds_monthSalary.rowposition,'FINALIZE_STATUS'));
+
+	
+  	transaction("cancelfinalizeID",
+  				"svcSalary::modifyMonthSalary",
+  				"ds_monthSalary=ds_monthSalary",
+  				"",
+  				"",
+  				"fn_callback");
+	
+}
 
 
 function fn_callback(trID, ErrorCode, ErrorMsg) //실행 function
@@ -308,11 +340,26 @@ function fn_callback(trID, ErrorCode, ErrorMsg) //실행 function
 	}
 	
 	
-	
+		if(trID=="finalizeID"){
+		if(ErrorCode!=0){
+			alert("마감을 실패했습니다. ");
+			}else{
+				alert("마감처리되었습니다. ");
+		}
+	}
+	if(trID=="cancelfinalizeID"){
+		if(ErrorCode!=0){
+			alert("마감취소에 실패했습니다. ");
+			}else{
+				alert("취소 처리되었습니다. ");
+			}
+	}
 }
 function Year_onitemchanged(obj:Combo, e:ItemChangeEventInfo)
 {
 	
-}]]></Script>
+}
+
+]]></Script>
   </Form>
 </FDL>
