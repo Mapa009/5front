@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="fullTimeSalary" classname="fullTimeSalary" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" onload="onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" text="상용직급여" position2="absolute l:18 w:266 t:23 h:81" positiontype="position2" style="align:center;font:Verdana,24,bold;"/>
+        <Grid id="monthTax" taborder="1" useinputpanel="false" position2="absolute l:728 w:280 t:223 h:323" positiontype="position2" binddataset="ds_monthSalary">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="139"/>
+                <Column size="139"/>
+              </Columns>
+              <Rows>
+                <Row size="42" band="head"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="37" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="font:,14;" text="공제항목"/>
+                <Cell col="1" style="font:,14;" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="국민연금"/>
+                <Cell col="1" text="bind:NATIONAL_PENSION"/>
+                <Cell row="1" text="건강보험"/>
+                <Cell row="1" col="1" text="bind:HEALTH_INSURANCE"/>
+                <Cell row="2" text="장기요양보험"/>
+                <Cell row="2" col="1" text="bind:LONG_TERM_INSURANCE"/>
+                <Cell row="3" text="고용보험"/>
+                <Cell row="3" col="1" text="bind:EMPLOYMENT_INSURANCE"/>
+                <Cell row="4" text="기부금"/>
+                <Cell row="4" col="1" text="bind:RELIGION_DONATION"/>
+                <Cell row="5" text="소득세"/>
+                <Cell row="5" col="1" text="bind:INCOME_TEX"/>
+                <Cell row="6" text="주민세"/>
+                <Cell row="6" col="1" text="bind:RESIDENT_TAX"/>
+              </Band>
+              <Band id="summary">
+                <Cell style="font:,12;" text="공제총액"/>
+                <Cell col="1" style="font:,12;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="empList" taborder="1" binddataset="ds_insaEmpSearch" useinputpanel="false" position2="absolute l:21 w:280 t:224 h:322" positiontype="position2" style="font:Verdana,9,antialias;" oncellclick="empList_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="139"/>
+                <Column size="139"/>
+              </Columns>
+              <Rows>
+                <Row size="44" band="head"/>
+                <Row size="24"/>
+                <Row size="35" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="font:Arial Narrow,14;" text="사원코드"/>
+                <Cell col="1" style="font:,14;" text="사원명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMP_CODE"/>
+                <Cell col="1" text="bind:EMP_NAME"/>
+              </Band>
+              <Band id="summary">
+                <Cell style="font:,12;" text="총 인원"/>
+                <Cell col="1" style="font:,12;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="monthSalary" taborder="1" useinputpanel="false" position2="absolute l:428 w:280 t:223 h:323" positiontype="position2" binddataset="ds_monthSalary">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="139"/>
+                <Column size="139"/>
+              </Columns>
+              <Rows>
+                <Row size="42" band="head"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="24"/>
+                <Row size="35" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="font:,14;" text="지급항목"/>
+                <Cell col="1" style="font:,14;" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="기본급"/>
+                <Cell col="1" text="bind:BASIC_SALARY"/>
+                <Cell row="1" text="직책수당"/>
+                <Cell row="1" col="1" text="bind:POSITION_SALARY"/>
+                <Cell row="2" text="식대"/>
+                <Cell row="2" col="1" text="bind:FOOD_SALARY"/>
+                <Cell row="3" text="초과근무수당"/>
+                <Cell row="3" col="1" text="bind:OVER_WORK_SALARY"/>
+                <Cell row="4" text="가족수당"/>
+                <Cell row="4" col="1" text="bind:FAMILY_SALARY"/>
+              </Band>
+              <Band id="summary">
+                <Cell style="font:,12;" text="지급총액"/>
+                <Cell col="1" style="font:,12;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button01" taborder="1" text="마  감" position2="absolute l:314 w:97 t:311 h:49" positiontype="position2" style="color:coral;"/>
+        <Button id="Button02" taborder="1" text="마감취소" position2="absolute l:314 w:97 t:390 h:49" positiontype="position2" style="color:coral;"/>
+        <Combo id="Year" taborder="1" position2="absolute l:36 w:156 t:136 h:48" positiontype="position2" index="-1" codecolumn="codecolumn" datacolumn="datacolumn" onitemchanged="Year_onitemchanged" style="font:Verdana,9,bold antialias;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">2021</Col>
+                <Col id="datacolumn">2021</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2020</Col>
+                <Col id="datacolumn">2020</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2019</Col>
+                <Col id="datacolumn">2019</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2018</Col>
+                <Col id="datacolumn">2018</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2017</Col>
+                <Col id="datacolumn">2017</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2016</Col>
+                <Col id="datacolumn">2016</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Combo id="Month" taborder="1" position2="absolute l:204 w:88 t:136 h:48" positiontype="position2" codecolumn="codecolumn" datacolumn="datacolumn" index="-1">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">1</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">2</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">3</Col>
+                <Col id="datacolumn">3</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">4</Col>
+                <Col id="datacolumn">4</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">5</Col>
+                <Col id="datacolumn">5</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">6</Col>
+                <Col id="datacolumn">6</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">7</Col>
+                <Col id="datacolumn">7</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">8</Col>
+                <Col id="datacolumn">8</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">9</Col>
+                <Col id="datacolumn">9</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">10</Col>
+                <Col id="datacolumn">10</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">11</Col>
+                <Col id="datacolumn">11</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">12</Col>
+                <Col id="datacolumn">12</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="empList" propid="" datasetid="gds_emp" columnid=""/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_insaEmpSearch" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMO_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_monthSalary" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="BASIC_SALARY" type="INT" size="256"/>
+          <Column id="POSITION_SALARY" type="INT" size="256"/>
+          <Column id="FOOD_SALARY" type="INT" size="256"/>
+          <Column id="OVER_WORK_SALARY" type="INT" size="256"/>
+          <Column id="FAMILY_SALARY" type="INT" size="256"/>
+          <Column id="NATIONAL_PENSION" type="STRING" size="256"/>
+          <Column id="HEALTH_INSURANCE" type="STRING" size="256"/>
+          <Column id="LONG_TERM_INSURANCE" type="STRING" size="256"/>
+          <Column id="EMPLOYMENT_INSURANCE" type="STRING" size="256"/>
+          <Column id="INCOME_TEX" type="STRING" size="256"/>
+          <Column id="RESIDENT_TAX" type="STRING" size="256"/>
+          <Column id="RELIGION_DONATION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_monthTax" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Script type="xscript4.0"><![CDATA[function onload(obj:Form, e:LoadEventInfo) //화면 들어오면 바로 실행
+{
+var date = new Date();	
+var year = date.getFullYear();
+var month = date.getMonth();
+var yearMonth =year+'-'+month;
+
+	 	transaction(
+					"searchEmpCode",
+					"svcEmp::list",  
+					"",
+					"ds_insaEmpSearch=gds_emp",
+					"value=전체부서",
+					"fn_callback"
+					);
+}
+
+
+function empList_oncellclick(obj:Grid, e:GridClickEventInfo)
+{
+	if(Month.text=='')
+	{
+	alert("월을 선택하세요");
+		
+		if(Year.text=='')
+		{
+		alert("연도를 선택하세요");
+		}
+	}
+	else{
+		var yearMonth = Year.text+'-'+Month.text;  //선택한 년,월 조합
+			trace(yearMonth);
+		var empcode=ds_insaEmpSearch.getColumn(ds_insaEmpSearch.rowposition,"EMP_CODE"); //empCode
+			trace(empcode);
+		var empName=ds_insaEmpSearch.getColumn(ds_insaEmpSearch.rowposition,"EMP_NAME"); //empName
+			trace(empName);
+				
+	 	transaction(
+					"searchAllMoney",
+					"svcSalary::selectSalary", 
+					"",
+					"ds_monthSalary=ds_fullTimeSal",
+					"applyYearMonth2= "+yearMonth+"empCode="+empcode,
+					"fn_callback"
+					);
+	}
+	
+}
+
+
+
+function fn_callback(trID, ErrorCode, ErrorMsg) //실행 function
+{
+	if(trID=="searchEmpCode") //화면 
+	{
+		if(ErrorCode<0){ //에러코드가 음수이면 저장실패임
+			alert("회원정보 조회실패");
+		}
+	}
+	
+	if(trID=="searchAllMoney") //셀클릭
+	{
+		if(ErrorCode<0){ 
+			alert("조회실패");
+		}
+	}
+	
+	
+	
+}
+function Year_onitemchanged(obj:Combo, e:ItemChangeEventInfo)
+{
+	
+}]]></Script>
+  </Form>
+</FDL>

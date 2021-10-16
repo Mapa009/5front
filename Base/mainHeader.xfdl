@@ -12,18 +12,18 @@
     </Layouts>
     <Script type="xscript4.0"><![CDATA[function Menu00_onmenuclick(obj:Menu, e:MenuClickEventInfo)
 {
-	var sID  = e.id
-	var sURL = gds_menu.lookup("MENU_CODE",e.id,"MENU_URL");
-	var sTitle = gds_menu.lookup("MENU_CODE",e.id,"MENU_NAME");
+	var sID = e.id
+	var sURL = gds_menu.lookup("MUNU_CODE",e.id,"MENU_URL");
+	var sTitle = gds_menu.lookup("MUNU_CODE",e.id,"MENU_NAME");
+	
 	if(sURL==null){
 		alert("메뉴설정을 해주세요");
-		return;
 	}
 	if(sURL.length<1)
 	{
 		return;
 	}
-	gfn_Open("body",sTitle,sURL);
+	gfn_Open(sID,sTitle,sURL);
 }
 function logout_onclick(obj:Button,  e:ClickEventInfo)
 {
@@ -34,6 +34,7 @@ function logout_onclick(obj:Button,  e:ClickEventInfo)
 function home_onclick(obj:Button,  e:ClickEventInfo)
 {
 	gfn_Open("body","mainForm","Base::mainBody.xfdl");
-}]]></Script>
+}
+]]></Script>
   </Form>
 </FDL>

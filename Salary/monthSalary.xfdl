@@ -246,7 +246,7 @@ function Tab1_monthSalary_monthSearchBtn_onclick(obj:Button,  e:ClickEventInfo)
 		return;
 	}else{		
  	transaction("monthSalaryID",
- 				"svcSalary::findMonthSalary.do",  
+ 				"svcSalary::findMonthSalary",  
  				"",
  				"ds_MonthSalary=ds_MonthSalary ds_monthDeductionList=ds_monthDeductionList ds_monthExtSalList=ds_monthExtSalList",
  				"empCode='"+g_empCode+"' applyYearMonth='"+Tab1.monthSalary.Calendar.text+"'",
@@ -279,7 +279,7 @@ function Tab1_monthSalary_finalizeBtn_onclick(obj:Button,  e:ClickEventInfo)
 // "applyYearMonth":"2020-3"}
 	
   	transaction("finalizeID",
-  				"svcSalary::modifyMonthSalary.do",
+  				"svcSalary::modifyMonthSalary",
   				"ds_MonthSalary=ds_MonthSalary",
   				"",
   				"",
@@ -297,7 +297,7 @@ function Tab1_monthSalary_cancelBtn_onclick(obj:Button,  e:ClickEventInfo)
 // "applyYearMonth":"2020-3"}
 	
   	transaction("cancelfinalizeID",
-  				"svcSalary::modifyMonthSalary.do",
+  				"svcSalary::modifyMonthSalary",
   				"ds_MonthSalary=ds_MonthSalary",
   				"",
   				"",
@@ -315,11 +315,11 @@ function Tab1_monthSalary_cancelBtn_onclick(obj:Button,  e:ClickEventInfo)
 		}
 	}
 	if(trID=="cancelfinalizeID"){
-	if(ErrorCode!=0){
-		alert("마감취소에 실패했습니다. ");
-		}else{
-			alert("취소 처리되었습니다. ");
-		}
+		if(ErrorCode!=0){
+			alert("마감취소에 실패했습니다. ");
+			}else{
+				alert("취소 처리되었습니다. ");
+			}
 	}
  }
  
@@ -336,7 +336,7 @@ if(Tab1.yearSalaryTab.Calendar.text==null){
 		alert("조회연도를 선택하여주세요.");
 	}else{
 			transaction("findYearSalaryID",
-						"svcSalary::findYearSalary.do",
+						"svcSalary::findYearSalary",
 						"",
 						"ds_yearSalary=ds_MonthSalary",
 						"applyYear='"+Tab1.yearSalaryTab.Calendar.text+"' empCode='"+g_empCode+"'",
