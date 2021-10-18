@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="listform" classname="listform" inheritanceid="" position="absolute 0 0 907 637" titletext="New Form" style="background:dimgray;">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" text="게시판" position2="absolute l:322 w:262 t:24 h:61" positiontype="position2" style="font:Verdana,48,bold;"/>
+        <Div id="Div00" taborder="1" position2="absolute l:54 w:786 t:112 h:56" positiontype="position2" text="Div00">
+          <Layouts>
+            <Layout width="786" height="56">
+              <Static id="Static00" text="번호" position2="absolute l:17 w:130 t:6 h:42" positiontype="position2" style="font:Verdana,16,bold;"/>
+              <Static id="Static01" text="제목" position2="absolute l:209 w:130 t:5 h:42" positiontype="position2" style="font:Verdana,16,bold;" onclick="Div00_Static01_onclick"/>
+              <Static id="Static02" text="작성자" onclick="Div00_Static01_onclick" position2="absolute l:497 w:130 t:6 h:42" positiontype="position2" style="font:Verdana,16,bold;"/>
+              <Static id="Static03" text="작성일자" onclick="Div00_Static01_onclick" position2="absolute l:639 w:130 t:5 h:42" positiontype="position2" style="font:Verdana,16,bold;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="1" position2="absolute l:54 w:786 t:188 h:283" positiontype="position2" text="Div00">
+          <Layouts>
+            <Layout width="786" height="56">
+              <Static id="Static00" text="번호1" position2="absolute l:17 w:130 t:6 h:42" style="font:Verdana,16,bold;" positiontype="position2" onclick="Div01_Static00_onclick"/>
+              <Static id="Static01" text="제목1" onclick="Div00_Static01_onclick" position2="absolute l:209 w:130 t:5 h:42" style="font:Verdana,16,bold;" positiontype="position2"/>
+              <Static id="Static02" text="작성자1" onclick="Div00_Static01_onclick" position2="absolute l:497 w:130 t:6 h:42" style="font:Verdana,16,bold;" positiontype="position2"/>
+              <Static id="Static03" text="작성일자1" onclick="Div00_Static01_onclick" position2="absolute l:639 w:130 t:5 h:42" style="font:Verdana,16,bold;" positiontype="position2"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="writeBT" taborder="1" text="글쓰기" position2="absolute l:457 w:180 t:487 h:67" positiontype="position2" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript4.0"><![CDATA[//글쓰기 버튼"
+function Button00_onclick(obj:Button,  e:ClickEventInfo)
+{
+	gfn_Open("body","게시판 작성","Base::listWrite.xfdl");
+}
+]]></Script>
+  </Form>
+</FDL>
