@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.4">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="listWrite" classname="listWrite" inheritanceid="" position="absolute 0 0 907 637" titletext="New Form" style="background:dimgray;" onload="listWrite_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" position2="absolute l:81 w:760 t:48 h:532" positiontype="position2" text="Div00">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" text="제목" position2="absolute l:49 w:151 t:23 h:57" positiontype="position2" onclick="Div00_Static00_onclick"/>
+              <Edit id="title" taborder="1" position2="absolute l:207 w:520 t:15 h:72" positiontype="position2"/>
+              <Edit id="textBody" taborder="1" position2="absolute l:70 w:630 t:166 h:257" positiontype="position2" displaynulltext="본문 내용을 작성하여 주세요"/>
+              <Button id="registBT" taborder="1" text="등록" position2="absolute l:539 w:183 t:447 h:54" positiontype="position2" onclick="Div00_registBT_onclick"/>
+              <Static id="Static01" text="작성자" position2="absolute l:42 w:144 t:98 h:52" positiontype="position2" onclick="Div00_Static01_onclick"/>
+              <Edit id="empName" taborder="1" readonly="true" oneditclick="empName_oneditclick" position2="absolute l:210 w:348 t:110 h:35" positiontype="position2" style="background:#ffffffff;border:1 solid #999999ff,1 solid #ccccccff,1 solid #ccccccff,1 solid #999999ff;align:center middle;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Bind/>
+    <Script type="xscript4.0"><![CDATA[
+//최초셋팅
+function listWrite_onload(obj:Form, e:LoadEventInfo)
+{
+
+	Div00.empName.value=gds_emp.getColumn(0,"EMP_NAME");
+	
+	trace("Event_Info에서 onload 등록");
+}
+	
+
+// 등록버튼
+function Div00_registBT_onclick(obj:Button,  e:ClickEventInfo)
+{
+
+	if(Div00.title.value==null){
+	alert("제목을 입력하세요");
+	return;
+	}
+	if(Div00.textBody.value==null){
+	alert("내용을 입력하세요");
+	return;
+	}
+	
+	trace(Div00.title.value);
+	trace(Div00.textBody.value);
+}]]></Script>
+  </Form>
+</FDL>

@@ -9,7 +9,7 @@
             <Tabpage id="page1" text="부서명으로 사원 검색" style="anchor:default;background:#c8c8c870;">
               <Layouts>
                 <Layout width="132" height="376">
-                  <Grid id="Grid00" taborder="1" binddataset="ds_emp" useinputpanel="false" autofittype="col" cellclickbound="cell" oncellclick="Tab00_tabpage1_Grid00_oncellclick" onheadclick="grd_output_onheadclick" position2="absolute l:19 w:344 t:84 h:289" positiontype="position2" style="align:center;font:맑은 고딕 Semilight,9,antialias;">
+                  <Grid id="Grid00" taborder="1" binddataset="ds_emp" useinputpanel="false" autofittype="col" cellclickbound="cell" oncellclick="Tab00_tabpage1_Grid00_oncellclick" onheadclick="grd_output_onheadclick" position2="absolute l:19 w:344 t:84 h:289" positiontype="position2" style="background:gray;align:center;font:맑은 고딕 Semilight,9,antialias;">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -73,7 +73,7 @@
                 <Layout>
                   <Button id="btn_search" taborder="1" text="검색" onclick="Tab_page2_btn_search_onclick" position2="absolute l:268 w:40 t:25 h:28" positiontype="position2" style="color:dimgray;"/>
                   <Edit id="name_text" taborder="1" oneditclick="Tab_page2_name_text_oneditclick" position2="absolute l:60 w:190 t:25 h:32" positiontype="position2"/>
-                  <Grid id="Grid01" taborder="1" binddataset="ds_emp" useinputpanel="false" autofittype="col" cellclickbound="cell" oncellclick="Tab00_tabpage1_Grid00_oncellclick" onheadclick="grd_output_onheadclick" position2="absolute l:19 w:344 t:84 h:289" positiontype="position2" style="align:center;font:맑은 고딕 Semilight,9,antialias;">
+                  <Grid id="Grid01" taborder="1" binddataset="ds_empList" useinputpanel="false" autofittype="col" cellclickbound="cell" oncellclick="Tab_page1_Grid00_oncellclick" onheadclick="grd_output_onheadclick" position2="absolute l:19 w:344 t:84 h:289" positiontype="position2" style="align:center;font:맑은 고딕 Semilight,9,antialias;">
                     <Formats>
                       <Format id="default">
                         <Columns>
@@ -105,27 +105,30 @@
         </Tab>
         <Tab id="Tab00" taborder="1" position2="absolute l:574 w:357 t:107 h:511" positiontype="position2" tabindex="0" scrollbars="autoboth">
           <Tabpages>
-            <Tabpage id="tabpage1" text="권한" position="absolute 1 22 62 510" style="anchor:default;background:#c8c8c870;">
+            <Tabpage id="tabpage1" text="권한" style="anchor:default;background:#c8c8c870;">
               <Layouts>
                 <Layout>
-                  <Grid id="Grid00" taborder="0" useinputpanel="false" position2="absolute l:7 w:324 t:7 h:390" positiontype="position2" autofittype="col" cellclickbound="cell" binddataset="gds_groupAuthority" oncellclick="tabpage1_Grid00_celClicked">
+                  <Grid id="Grid00" taborder="0" useinputpanel="false" position2="absolute l:7 w:324 t:7 h:390" positiontype="position2" autofittype="col" cellclickbound="cell" binddataset="ds_authority">
                     <Formats>
                       <Format id="default">
                         <Columns>
                           <Column size="92"/>
                           <Column size="91"/>
+                          <Column size="106"/>
                         </Columns>
                         <Rows>
                           <Row size="24" band="head"/>
                           <Row size="24"/>
                         </Rows>
                         <Band id="head">
-                          <Cell style="background:#5d5d5dff;color:white;font:나눔고딕,9;" text="그룹코드"/>
-                          <Cell col="1" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" text="그룹이름"/>
+                          <Cell style="background:#5d5d5dff;color:white;font:나눔고딕,9;" text="메뉴코드"/>
+                          <Cell col="1" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" text="메뉴이름"/>
+                          <Cell col="2" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" text="권한"/>
                         </Band>
                         <Band id="body">
-                          <Cell text="bind:GROUP_CODE"/>
-                          <Cell col="1" text="bind:GROUP_NAME"/>
+                          <Cell text="bind:MENU_CODE"/>
+                          <Cell col="1" text="bind:MENU_NAME"/>
+                          <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:AUTHORITY"/>
                         </Band>
                       </Format>
                     </Formats>
@@ -135,8 +138,8 @@
             </Tabpage>
           </Tabpages>
         </Tab>
-        <Button id="Button02" taborder="1" text="삭제" position2="absolute l:773 w:61 t:546 h:31" positiontype="position2" style="background:#5d5d5dff;color:aliceblue;font:나눔고딕 ExtraBold,9,bold;" onclick="deleteAuth"/>
-        <Button id="Button03" taborder="1" text="추가" position2="absolute l:672 w:61 t:546 h:31" positiontype="position2" style="background:#5d5d5dff;color:aliceblue;font:나눔고딕 ExtraBold,9,bold;" onclick="addAuth"/>
+        <Button id="Button00" taborder="1" text="저장" onclick="save" position2="absolute l:640 w:93 t:546 h:43" positiontype="position2" style="background:#5d5d5dff;color:aliceblue;font:나눔고딕 ExtraBold,9,bold;"/>
+        <Button id="Button02" taborder="1" text="취소" onclick="cancle" position2="absolute l:783 w:93 t:546 h:43" positiontype="position2" style="background:#5d5d5dff;color:aliceblue;font:나눔고딕 ExtraBold,9,bold;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -161,8 +164,13 @@
       </Dataset>
       <Dataset id="ds_authority" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
           <Column id="EMP_CODE" type="STRING" size="256"/>
-          <Column id="GROUP_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="MENU_CODE" type="STRING" size="256"/>
+          <Column id="MENU_NAME" type="STRING" size="256"/>
+          <Column id="AUTHORITY" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -170,11 +178,10 @@
     <InitValue/>
     <Script type="xscript4.0"><![CDATA[
 var empCode;
-var rowNum;
 
 function powerManage_onload(obj:Form, e:LoadEventInfo)
-{
-	gds_groupAuthority.clear();
+{ 
+	
 }
 
 function Tab_tabpage1_btn_search_onclick(obj:Button,  e:ClickEventInfo)
@@ -184,7 +191,7 @@ function Tab_tabpage1_btn_search_onclick(obj:Button,  e:ClickEventInfo)
 	if(codeName==null){
 	    Tab.page1.btn_dept_search.value="전체부서";
 	}
-
+	
 	transaction(
 				"searchDeptID"
 			   ,"svcEmp::list"
@@ -217,80 +224,34 @@ function Tab00_tabpage1_Grid00_oncellclick(obj:Grid, e:GridClickEventInfo){
 	empCode=ds_emp.getColumn(ds_emp.rowposition,"EMP_CODE")
 	   transaction(
 				"authorityID"
-				,"svcBase::findGroupAuthority"
+				,"svcBase::findAuthorityList"
 				,""
-				,"gds_groupAuthority=gds_groupAuthority"
+				,"ds_authority=ds_authority"
 				,"empCode='"+empCode+"'"
 				,"fn_callback"
 		);
 }
-function addAuth(obj:Button, e:ClickEventInfo){
-dialog(   
-		 "addAuthID",   // 생성될 ChildFrame의 이름
-         "Base::authorityGroupDialog.xfdl",   // 로딩한 폼의 URL
-         MainFrame,   // ParentFrame
-         null,   // ChildFrame에 추가될 변수 리스트 {변수명:변수값, 변수명:변수값}
-         "",   // ChildFrame에 설정할 속성 리스트 a=b b='c' 
-         650,   // ChildFrame의 position 중 left 값
-         350   // ChildFrame의 position 중 top 값
-   );
-   if(g_groupAuthCode!=null && g_groupAuthName!=null){
-		var count=gds_groupAuthority.getRowCount();
-		trace(count);
-		if(g_groupAuthCode=="AUTH04"){
-			return alert("시스템관지라는 권한을 설정 할 수 없습니다. ");
-		}
-		for(num=0;num<count;num++){
-			var code=gds_groupAuthority.getColumn(num,"GROUP_CODE");
-			if(code==g_groupAuthCode){
-			return alert("중복된 코드입니다.");
-			}else if(code=="AUTH04"){
-			return alert("시스템관리 권한은 부여할 수 없습니다.");
-			}
-		}
-	gds_groupAuthority.addRow();
-	gds_groupAuthority.setColumn(gds_groupAuthority.rowposition,"GROUP_CODE",g_groupAuthCode);
-	gds_groupAuthority.setColumn(gds_groupAuthority.rowposition,"GROUP_NAME",g_groupAuthName);
 
-	gds_empAuthGroup.addRow();
-	gds_empAuthGroup.setColumn(gds_empAuthGroup.rowposition,"GROUP_CODE",g_groupAuthCode);
-	gds_empAuthGroup.setColumn(gds_empAuthGroup.rowposition,"EMP_CODE",empCode);
-	
-	g_groupAuthCode=null;
-	g_groupAuthName=null;
-   }
-   transaction(
-				"saveEmpAuthorityGroupID"
-				,"svcBase::saveEmpAuthorityGroup"
-				,"gds_empAuthGroup=gds_empAuthGroup:u"
+
+
+function save(obj:Button, e:ClickEventInfo){
+	trace("11");
+	transaction(
+				"authorityReg"
+				,"svcBase::saveAuthority"
+				,"ds_authority=ds_authority:u"
 				,""
 				,""
-				,"fn_callback"
+				,"fn_callback"			
 	);
-	
 }
-function deleteAuth(obj:Button, e:ClickEventInfo){
-    var groupCode=gds_groupAuthority.getColumn(gds_groupAuthority.rowposition,"GROUP_CODE");
-    trace(groupCode);
-    trace(empCode);
-    gds_groupAuthority.deleteRow(gds_groupAuthority.rowposition);
-    
+
+function cancle(obj:Button, e:ClickEventInfo){
 transaction(
 				"authorityID"
-				,"svcBase::deleteGroupAuthority"
+				,"svcBase::findAuthorityList"
 				,""
-				,""
-				,"empCode='"+empCode+"' groupCode='"+groupCode+"'"
-				,"fn_callback"
-		);
-}
-function cancle(obj:Button, e:ClickEventInfo){
-  
-transaction(
-				"deletAuthID"
-				,"svcBase::findGroupAuthority"
-				,""
-				,"gds_groupAuthority=gds_groupAuthority"
+				,"ds_authority=ds_authority"
 				,"empCode='"+empCode+"'"
 				,"fn_callback"
 		);
@@ -313,15 +274,10 @@ function fn_callback(trID,ErrorCode,ErrorMsg){
 	     }
 	}
 }
-
-
-
-function tabpage1_Grid00_celClicked(obj:Grid, e:GridClickEventInfo)
+function Combo00_onitemchanged(obj:Combo, e:ItemChangeEventInfo)
 {
-	trace(e.row);
-	//trace(gds_empAuthGroup.getColumn());
-	trace(gds_groupAuthority.getColumn(e.row,"GROUP_CODE"));
 }
+
 ]]></Script>
   </Form>
 </FDL>

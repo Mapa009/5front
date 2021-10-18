@@ -240,6 +240,16 @@ function fn_confirmcallback(trID,ErrorCode,ErrorMsg){
 			alert("확정 실패"+ErrorMsg);
 		}else{
 			alert("성공");
+			
+			var count=ds_certificateList.rowcount;
+			for(var i=0;i<count;i++){
+				var status=ds_certificateList.getColumn(i,"STATUS");
+				
+				if(status=="update"){
+					ds_certificateList.setColumn(i,"STATUS","0");
+				}
+			 }
+			ds_certificateList.setColumn()
 		}
 	}
 }
