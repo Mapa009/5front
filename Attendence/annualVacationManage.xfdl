@@ -87,7 +87,7 @@ function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 
       transaction(
                 "vacaSearchID"
-                ,"svcAttendance::findAnnualVacationMgtList.do" // 여기 수정
+                ,"svcAttendance::findAnnualVacationMgtList" // 여기 수정
                 ,""
                 ,"ds_annualVacation=ds_annualVacation" // 여기 수정
                 ,"applyYearMonth='"+dateData+"'"
@@ -153,7 +153,7 @@ function Tab00_tabpage1_finalize_annualVacation_btn_onclick(obj:Button,  e:Click
 function updateAnnualVacation(){
       transaction(
                "vacaUpdateID"
-               ,"svcAttendance::modifyAnnualVacationMgtList.do"
+               ,"svcAttendance::modifyAnnualVacationMgtList"
                ,"ds_annualVacation=ds_annualVacation"
                ,"ds_annualVacation=ds_annualVacation"
                ,""
