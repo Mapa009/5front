@@ -720,7 +720,7 @@ function Tab_page1_Grid00_oncellclick(obj:Grid, e:GridClickEventInfo)
 	trace(empName);
 	
 	transaction(
-				"searceCodeID",
+				"searchCodeID",
 				"DataURL::emp/findAllEmployeeInfo",
 				"",
 				"ds_workInfoLis=ds_workInfo ds_careerInfoList=ds_careerInfo ds_educationInfoList=ds_educationInfo ds_licenseInfoList=ds_licenseInfo ds_familyInfoList=ds_familyInfo",
@@ -740,13 +740,11 @@ function Tab_page2_Grid00_oncellclick(obj:Grid, e:GridClickEventInfo)
 
 //콜백
 function fn_callback(trID ,ErrorCode ,ErrorMsg){
-  if(trID=="searcDeptID"){  //부서명 검색 콜백 
+  if(trID=="searchDeptID"){  //부서명 검색 콜백 
     if(ErrorCode!=0){
        alert("조회실패 :" +ErrorCode);
     }else{
-      var empCode =ds_empList.getColumn(ds_empList.rowposition,"EMP_CODE");
-      var imgExtend =ds_empList.getColumn(ds_empList.rowposition,"IMG_EXTEND");
-      trace(imgExtend);
+ 
 	  Tab01.tabpage1.empImg.image="URL('http://localhost/profile/"+empCode+'"."'+imgExtend+"')";  //imgImage ::= 'url('리소스 이미지')' | 'url('절대경로 이미지')' | 'url('상대경로이미지')' | 'url("''웹이미지'"')'
       trace("부서명검색"+empImg);
       var empImg=Tab01.tabpage1.empImg.image;
