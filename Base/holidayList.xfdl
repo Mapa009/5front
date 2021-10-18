@@ -47,7 +47,7 @@
     <Objects>
       <Dataset id="ds_holidayList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
-          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="DATE" size="256"/>
           <Column id="HOLIDAY_NAME" type="STRING" size="256"/>
           <Column id="NOTE" type="STRING" size="256"/>
           <Column id="STATUS" type="STRING" size="256"/>
@@ -71,14 +71,19 @@ function holidayList_onload(obj:Form, e:LoadEventInfo)
 //추가
 function Tab00_tabpage1_add_Btn_onclick(obj:Button,  e:ClickEventInfo)
 {
-	ds_holidayList.addRow();	
+	ds_holidayList.addRow();
 	ds_holidayList.setColumn(ds_holidayList.rowposition,"STATUS","insert");
 }
 
 //삭제
 function Tab00_tabpage1_delete_Btn_onclick(obj:Button,  e:ClickEventInfo)
 {
-	ds_holidayList.setColumn(ds_holidayList.rowposition,"STATUS","delete");
+	var status = ds_holidayList.getColumn(ds_holidayList.rowposition,"STATUS");
+	if(status=="insert"){
+		ds_holidayList.deleteRow(ds_holidayList.rowposition);
+	}else{
+		ds_holidayList.setColumn(ds_holidayList.rowposition,"STATUS","delete");
+	}
 }
 
 
@@ -94,7 +99,7 @@ function Tab00_tabpage1_update_Btn_onclick(obj:Button,  e:ClickEventInfo)
 	}
 	transaction(
 				"submitID"
-				,"svcBase::regitCodeList"
+				,"svcBase::batchHoilyDayProcess"
 				,"ds_holiday=ds_holidayList:u"
 				,""
 				,""
