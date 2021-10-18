@@ -64,19 +64,24 @@ function baseExtSalManage_onload(obj:Form, e:LoadEventInfo)
 				,"fn_callback"
 	);
 }
-//콜벡
+//콜백과 함께 status 설정
 function fn_callback(trID,ErrorCode,ErrorMsg){
 	if(trID=="baseExtID"){
 		if(ErrorCode!=0){
-			alert("로드실패");
+			alert("로드실패"+ErrorMsg);
+		}else{
+		   var count=ds_baseExtSalList.getColumn(i,"STATUS");
+		   for(var i=0;i<count;i++){
+				ds_baseExtSalList.setColumn(i,"STATUS","");
+		   }
 		}
 	}
 	if(trID=="submitID"){
-		if(ErrorCode!=0){
-			alert("변경실패");
-		}else{
-			alert("확정되었습니다.");
-		}
+	   if(ErrorCode!=0){
+		alert("변경실패"+ErrorMsg);
+	   }else{
+	   alert("변경되었습니다.");
+	   }
 	}
 }
 
@@ -85,7 +90,7 @@ function Tab01_tabpage1_Button02_onclick(obj:Button,  e:ClickEventInfo)
 {
 	transaction(
 				"submitID"
-				,"svcSalary::modifyBaseExtSalList.do"
+				,"svcSalary::modifyBaseExtSalList"
 				,"ds_baseExtSal=ds_baseExtSalList:u"
 				,"ds_baseExtSalList=ds_baseExtSal"
 				,""

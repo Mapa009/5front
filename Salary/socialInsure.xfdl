@@ -4,45 +4,78 @@
   <Form id="socialInsure" classname="socialInsure" inheritanceid="" position="absolute 0 0 1024 768" titletext="New Form" onload="socialInsure_onload">
     <Layouts>
       <Layout>
-        <Div id="Div00" taborder="0" position2="absolute l:40 w:940 t:32 h:79" positiontype="position2" text="Div00">
+        <Div id="Div00" taborder="0" position2="absolute l:44 w:940 t:31 h:79" positiontype="position2" text="Div00">
           <Layouts>
             <Layout width="940" height="57">
-              <Static id="Static00" text="사회보험 환경등록" position2="absolute l:71 w:172 t:16 h:39" positiontype="position2" style="font:돋움,14,bold;"/>
-              <Static id="Static01" text="귀속연도" position2="absolute l:423 w:136 t:16 h:44" positiontype="position2" style="font:돋움,14,bold;"/>
-              <Edit id="yearBox" taborder="1" position2="absolute l:538 w:229 t:16 h:45" positiontype="position2" value="2021"/>
+              <Static id="Static00" text="사회보험 환경등록" position2="absolute l:71 w:172 t:16 h:39" style="font:돋움,14,bold;" positiontype="position2"/>
+              <Static id="Static01" text="귀속연도" position2="absolute l:343 w:136 t:15 h:44" style="font:돋움,14,bold;" positiontype="position2"/>
+              <Edit id="yearBox" taborder="1" position2="absolute l:458 w:229 t:15 h:45" value="2021" style="font:Verdana,12,bold;" positiontype="position2"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div01" taborder="1" position2="absolute l:45 w:946 t:131 h:594" positiontype="position2" text="Div01">
+        <Div id="Div01" taborder="1" position2="absolute l:41 w:946 t:128 h:594" positiontype="position2" text="Div01">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" useinputpanel="false" position2="absolute l:14 w:264 t:41 h:451" positiontype="position2" binddataset="ds_socialInsureList">
-                <Formats>
-                  <Format id="default">
-                    <Columns>
-                      <Column size="115"/>
-                      <Column size="145"/>
-                    </Columns>
-                    <Rows>
-                      <Row size="24" band="head"/>
-                      <Row size="24"/>
-                    </Rows>
-                    <Band id="head">
-                      <Cell text="건강보험부담율"/>
-                      <Cell col="1" text="장기요양보험율"/>
-                    </Band>
-                    <Band id="body">
-                      <Cell text="bind:HEALTHINSURERATES"/>
-                      <Cell col="1" text="bind:LONGTERMCARERATE"/>
-                    </Band>
-                  </Format>
-                </Formats>
-              </Grid>
-              <Tab id="Tab00" taborder="1" position2="absolute l:392 w:517 t:55 h:418" positiontype="position2" tabindex="0" scrollbars="autoboth">
+              <Tab id="Tab00" taborder="1" position2="absolute l:82 w:626 t:18 h:439" tabindex="0" scrollbars="autoboth" positiontype="position2">
                 <Tabpages>
-                  <Tabpage id="tabpage1" text="tabpage1"/>
-                  <Tabpage id="tabpage2" text="tabpage2"/>
-                  <Tabpage id="tabpage3" text="tabpage3"/>
+                  <Tabpage id="tabpage1" text="건강보험">
+                    <Layouts>
+                      <Layout>
+                        <MaskEdit id="MaskEdit00" taborder="0" position2="absolute l:312 w:215 t:88 h:68" style="background:darkgray;align:center middle;font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static00" text="%" position2="absolute l:540 w:51 t:98 h:49" style="font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static01" text="◎ 건강보험" position2="absolute l:12 w:203 t:19 h:49" style="font:Verdana,20,bold;" onclick="Div01_Tab00_tabpage1_Static01_onclick" positiontype="position2"/>
+                        <Static id="Static02" text="건강보험 부담율 :" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:26 w:237 t:98 h:49" style="font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static03" text="장기요양 부담율 :" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:26 w:237 t:234 h:49" style="font:Verdana,20,bold;" positiontype="position2"/>
+                        <MaskEdit id="MaskEdit01" taborder="1" position2="absolute l:312 w:215 t:224 h:68" style="background:darkgray;align:center middle;font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static04" text="%" position2="absolute l:540 w:51 t:234 h:49" style="font:Verdana,20,bold;" positiontype="position2"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="tabpage2" text="국민연금">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static01" text="◎ 국민연금" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:12 w:203 t:19 h:49" style="font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static02" text="국민연금 개인부담율 :" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:26 w:293 t:98 h:49" style="font:Verdana,20,bold;" positiontype="position2"/>
+                        <MaskEdit id="MaskEdit00" taborder="1" position2="absolute l:312 w:215 t:88 h:68" style="background:darkgray;align:center middle;font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static00" text="%" position2="absolute l:540 w:51 t:98 h:49" style="font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static03" text="국민연금 사업자부담율 :" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:26 w:293 t:219 h:49" style="font:Verdana,18,bold;" positiontype="position2"/>
+                        <MaskEdit id="MaskEdit01" taborder="1" position2="absolute l:312 w:215 t:209 h:68" style="background:darkgray;align:center middle;font:Verdana,20,bold;" positiontype="position2"/>
+                        <Static id="Static04" text="%" position2="absolute l:540 w:51 t:219 h:49" style="font:Verdana,20,bold;" onclick="Div01_Tab00_tabpage2_Static04_onclick" positiontype="position2"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="tabpage3" text="고용보험">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static00" text="고용보험율 :" position2="absolute l:15 w:236 t:93 h:43" positiontype="position2" style="font:Verdana,16,bold;"/>
+                        <MaskEdit id="MaskEdit00" taborder="1" position2="absolute l:299 w:165 t:93 h:56" positiontype="position2"/>
+                        <Static id="Static01" text="%" position2="absolute l:488 w:64 t:93 h:52" positiontype="position2"/>
+                        <Static id="Static02" text="실업급여 사업자부담분율 :" position2="absolute l:15 w:236 t:168 h:43" positiontype="position2" style="font:Verdana,13,bold;"/>
+                        <MaskEdit id="MaskEdit01" taborder="1" position2="absolute l:299 w:165 t:168 h:56" positiontype="position2"/>
+                        <Static id="Static03" text="%" position2="absolute l:488 w:64 t:168 h:52" positiontype="position2"/>
+                        <Static id="Static04" text="고용안정사업 사업자부담분율 :" position2="absolute l:15 w:236 t:246 h:43" positiontype="position2"/>
+                        <MaskEdit id="MaskEdit02" taborder="1" position2="absolute l:299 w:165 t:246 h:56" positiontype="position2"/>
+                        <Static id="Static05" text="%" position2="absolute l:488 w:64 t:246 h:52" positiontype="position2"/>
+                        <Static id="Static06" text="직업능력개발사업 사업자부담분율 :" position2="absolute l:15 w:236 t:325 h:43" positiontype="position2"/>
+                        <MaskEdit id="MaskEdit03" taborder="1" position2="absolute l:299 w:165 t:325 h:56" positiontype="position2"/>
+                        <Static id="Static07" text="%" position2="absolute l:488 w:64 t:325 h:52" positiontype="position2"/>
+                        <Static id="Static08" text="◎ 고용보험" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:12 w:203 t:19 h:49" positiontype="position2" style="font:Verdana,20,bold;"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="tabpage4" text="산재보험">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static08" text="◎ 산재보험" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:12 w:203 t:19 h:49" positiontype="position2" style="font:Verdana,20,bold;"/>
+                        <Static id="Static02" text="국민연금 개인부담율 :" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:26 w:293 t:98 h:49" positiontype="position2" style="font:Verdana,20,bold;"/>
+                        <MaskEdit id="MaskEdit00" taborder="1" position2="absolute l:312 w:215 t:88 h:68" positiontype="position2" style="background:darkgray;align:center middle;font:Verdana,20,bold;"/>
+                        <Static id="Static00" text="%" position2="absolute l:540 w:51 t:98 h:49" positiontype="position2" style="font:Verdana,20,bold;"/>
+                        <Static id="Static01" text="국민연금 개인부담율 :" onclick="Div01_Tab00_tabpage1_Static01_onclick" position2="absolute l:26 w:293 t:233 h:49" positiontype="position2" style="font:Verdana,20,bold;"/>
+                        <MaskEdit id="MaskEdit01" taborder="1" position2="absolute l:312 w:215 t:223 h:68" positiontype="position2" style="background:darkgray;align:center middle;font:Verdana,20,bold;"/>
+                        <Static id="Static03" text="%" position2="absolute l:540 w:51 t:233 h:49" positiontype="position2" style="font:Verdana,20,bold;"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
                 </Tabpages>
               </Tab>
             </Layout>
@@ -53,20 +86,36 @@
     <Objects>
       <Dataset id="ds_socialInsureList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
-          <Column id="ATTRIBUTIONYEAR" type="STRING" size="256"/>
-          <Column id="HEALTHINSURERATES" type="STRING" size="256"/>
-          <Column id="LONGTERMCARERATE" type="STRING" size="256"/>
-          <Column id="NATIONPENISIONRATES" type="STRING" size="256"/>
-          <Column id="TEACHPENISIONRATES" type="STRING" size="256"/>
-          <Column id="EMPINSURERATES" type="STRING" size="256"/>
-          <Column id="WRKINSURERATES" type="STRING" size="256"/>
-          <Column id="JOBSTABILRATES" type="STRING" size="256"/>
-          <Column id="VOCACOMPETENCYRATES" type="STRING" size="256"/>
-          <Column id="INDUSTINSURERATES" type="STRING" size="256"/>
-          <Column id="INDUSTINSURECHARRATES" type="STRING" size="256"/>
+          <Column id="ATTRIBUTION_YEAR" type="STRING" size="256"/>
+          <Column id="HEALTH_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="LONGTERM_CARE_RATE" type="STRING" size="256"/>
+          <Column id="NATION_PENISION_RATES" type="STRING" size="256"/>
+          <Column id="TEACH_PENISION_RATES" type="STRING" size="256"/>
+          <Column id="EMP_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="WRK_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="JOB_STABIL_RATES" type="STRING" size="256"/>
+          <Column id="VOCA_COMPETENCY_RATES" type="STRING" size="256"/>
+          <Column id="INDUST_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="INDUST_INSURECHAR_RATES" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div01.Tab00.tabpage1.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="HEALTH_INSURE_RATES"/>
+      <BindItem id="item1" compid="Div01.Tab00.tabpage1.Div01.Tab00.tabpage1.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="HEALTH_INSURE_RATES"/>
+      <BindItem id="item2" compid="Div01.Tab00.tabpage1.MaskEdit01" propid="value" datasetid="ds_socialInsureList" columnid="LONGTERM_CARE_RATE"/>
+      <BindItem id="item3" compid="Div01.Tab00.tabpage2.Div01.Tab00.tabpage1.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="HEALTH_INSURE_RATES"/>
+      <BindItem id="item4" compid="Div01.Tab00.tabpage2.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="NATION_PENISION_RATES"/>
+      <BindItem id="item5" compid="Div01.Tab00.tabpage2.Div01.Tab00.tabpage2.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="NATION_PENISION_RATES"/>
+      <BindItem id="item6" compid="Div01.Tab00.tabpage2.MaskEdit01" propid="value" datasetid="ds_socialInsureList" columnid="TEACH_PENISION_RATES"/>
+      <BindItem id="item7" compid="Div01.Tab00.tabpage3.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="EMP_INSURE_RATES"/>
+      <BindItem id="item8" compid="Div01.Tab00.tabpage3.MaskEdit01" propid="value" datasetid="ds_socialInsureList" columnid="WRK_INSURE_RATES"/>
+      <BindItem id="item9" compid="Div01.Tab00.tabpage3.MaskEdit02" propid="value" datasetid="ds_socialInsureList" columnid="JOB_STABIL_RATES"/>
+      <BindItem id="item10" compid="Div01.Tab00.tabpage3.MaskEdit03" propid="value" datasetid="ds_socialInsureList" columnid="VOCA_COMPETENCY_RATES"/>
+      <BindItem id="item11" compid="Div01.Tab00.tabpage4.Div01.Tab00.tabpage2.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="NATION_PENISION_RATES"/>
+      <BindItem id="item12" compid="Div01.Tab00.tabpage4.MaskEdit00" propid="value" datasetid="ds_socialInsureList" columnid="INDUST_INSURE_RATES"/>
+      <BindItem id="item13" compid="Div01.Tab00.tabpage4.MaskEdit01" propid="value" datasetid="ds_socialInsureList" columnid="INDUST_INSURECHAR_RATES"/>
+    </Bind>
     <Script type="xscript4.0"><![CDATA[//로딩시 
 function socialInsure_onload(obj:Form, e:LoadEventInfo)
 { 
@@ -95,6 +144,9 @@ function fn_callback(trID,ErrorCode,ErrorMsg){
 			alert("확정되었습니다.");
 		}
 	}
-}]]></Script>
+}
+
+
+]]></Script>
   </Form>
 </FDL>

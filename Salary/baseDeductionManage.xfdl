@@ -77,6 +77,11 @@ function fn_callback(trID,ErrorCode,ErrorMsg){
 	if(trID=="deductionID"){
 		if(ErrorCode!=0){
 			alert("로드실패");
+		}else{
+		   var count=ds_baseDeductionList.getColumn(i,"STATUS");
+		   for(var i=0;i<count;i++){
+				ds_baseDeductionList.setColumn(i,"STATUS","");
+		   }
 		}
 	}
 	if(trID=="submitID"){
@@ -116,6 +121,7 @@ function Tab01_tabpage1_Button01_onclick(obj:Button,  e:ClickEventInfo)
 function Tab01_tabpage1_Button00_onclick(obj:Button,  e:ClickEventInfo)
 {
 	ds_baseDeductionList.setColumn(ds_baseDeductionList.rowposition,"STATUS","delete");
+	trace(ds_baseDeductionList);
 }
 
 //변경확정
