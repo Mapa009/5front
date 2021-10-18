@@ -251,8 +251,8 @@ function updateDayAtten(){
 	transaction(
 			"updateDayAttenID"
 			,"svcAttendance::modifyDayAttdList"
-			,"ds_dayAttenMng=ds_dayAttenMng"
-			,"ds_dayAttenMng=ds_dayAttenMng"
+			,"ds_dayAttenMng=ds_dayAttenMng:u"
+			,""
 			,""
 			,"fn_updatecallback"
 	);
