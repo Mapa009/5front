@@ -246,7 +246,7 @@ function Tab1_monthSalary_monthSearchBtn_onclick(obj:Button,  e:ClickEventInfo)
 		return;
 	}else{		
  	transaction("monthSalaryID",
- 				"svcSalary::findMonthSalary.do",  
+ 				"svcSalary::findMonthSalary",  
  				"",
  				"ds_MonthSalary=ds_MonthSalary ds_monthDeductionList=ds_monthDeductionList ds_monthExtSalList=ds_monthExtSalList",
  				"empCode='"+g_empCode+"' applyYearMonth='"+Tab1.monthSalary.Calendar.text+"'",
