@@ -205,7 +205,7 @@ function finalizeBtn_onclick(obj:Button,  e:ClickEventInfo)
 	
 	transaction(  //일근태 조회 
 				"finalizeID"  
-				,"svcAttendance::modifyDayAttdList"
+				,"svcAttendance::findDayAttdMgtList"
 				,""
 				,"ds_dayAttenMng=ds_dayAttenMng"
 				,"applyDay='"+dateDataY+dateDataM+dateDataD+"'"  //여기 수정
@@ -213,7 +213,7 @@ function finalizeBtn_onclick(obj:Button,  e:ClickEventInfo)
 	);
 }
 //월근태 조회 콜백 
-function fn_finalizecallback(trID,ErrorCode,ErroeMsg){
+function fn_finalizecallback(trID,ErrorCode,ErrorMsg){
 	if(trID=="finalizeID"){
 		if(ErrorCode!=0){
 			alert("월근태 조회 실패"+ErrorMsg);
@@ -250,7 +250,7 @@ function fn_finalizecallback(trID,ErrorCode,ErroeMsg){
 function updateDayAtten(){
 	transaction(
 			"updateDayAttenID"
-			,"svcAttendance::modifyDayAttdList.do"
+			,"svcAttendance::modifyDayAttdList"
 			,"ds_dayAttenMng=ds_dayAttenMng"
 			,"ds_dayAttenMng=ds_dayAttenMng"
 			,""

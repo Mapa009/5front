@@ -177,6 +177,7 @@ function Tab00_tabpage1_finalize_monthAttdMgt_Btn_onclick(obj:Button,  e:ClickEv
 	 for(var index=0;index<monthSize;index++){
 		  ds_monthAttenMng.setColumn(index,"FINALIZE_STATUS","Y");
 	 }
+	 alert("마감이완료되었습니다");
 	 updateMonthAtten();
 }
 //마감취소 버튼 
@@ -192,6 +193,7 @@ function Tab00_tabpage1_cancel_monthAttdMgt_Btn_onclick(obj:Button,  e:ClickEven
 	  for(var index=0;index<monthSize;index++){
 		 ds_monthAttenMng.setColumn(index,"FINALIZE_STATUS","N");
 	  }
+	  alert("마감이취소되었습니다");
 	  updateMonthAtten();
 }
 
@@ -200,7 +202,7 @@ function Tab00_tabpage1_cancel_monthAttdMgt_Btn_onclick(obj:Button,  e:ClickEven
 function updateMonthAtten(){
 		transaction(
 					"monthUpdateID"
-					,"svcAttendance::modifyMonthAttdList.do"
+					,"svcAttendance::modifyMonthAttdList"
 					,"ds_monthAttenMng=ds_monthAttenMng"
 					,"ds_monthAttenMng=ds_monthAttenMng"
 					,""
