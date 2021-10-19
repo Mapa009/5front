@@ -145,8 +145,10 @@ function Tab00_tabpage1_finalize_annualVacation_btn_onclick(obj:Button,  e:Click
       return;
    }
     var Size=ds_annualVacation.rowcount;
-    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"FINALIZE_STATUS","Y");
-    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"STATUS","update");
+    for(var i=0;i<Size;i++){
+		ds_annualVacation.setColumn(i,"FINALIZE_STATUS","Y");
+		ds_annualVacation.setColumn(i,"STATUS","update");
+    }
     updateAnnualVacation();
 }
 
@@ -155,7 +157,7 @@ function updateAnnualVacation(){
       transaction(
                "vacaUpdateID"
                ,"svcAttendance::modifyAnnualVacationMgtList"
-               ,"ds_annualVacation=ds_annualVacation:u"
+               ,"ds_annualVacation=ds_annualVacation"
                ,"ds_annualVacation=ds_annualVacation"
                ,""
                ,"fn_VacaUpdate_callback"
@@ -165,16 +167,18 @@ function updateAnnualVacation(){
 //마감취소
 function Tab00_tabpage1_cancel_annualVacation_btn_onclick(obj:Button,  e:ClickEventInfo)
 {
-   finalizeStatus=ds_annualVacation.getColumn(ds_annualVacation.rowposition,"FINALIZE_STATUS");
-   if(finalizeStatus=="N"){
-      alert("아직 마감되지 않았습니다.");
-   }
-   
-     var Size=ds_annualVacation.rowcount;
+	var cnt = ds_annualVacation.rowcount;
+	finalizeStatus=ds_annualVacation.getColumn(ds_annualVacation.rowposition,"FINALIZE_STATUS");
+	   if(finalizeStatus=="N"){
+		  alert("아직 마감되지 않았습니다.");
+		  return;
+	 }
+	for(var i=0;i<cnt;i++){
+		ds_annualVacation.setColumn(i,"FINALIZE_STATUS","N");
+		ds_annualVacation.setColumn(i,"STATUS","update");
+	}
      
      
-    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"FINALIZE_STATUS","N");
-    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"STATUS","update");
      updateAnnualVacation();
 }
 

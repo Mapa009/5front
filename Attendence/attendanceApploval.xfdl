@@ -199,14 +199,12 @@ function Tab00_tabpage1_approvalBtn_onclick(obj:Button,  e:ClickEventInfo)
 {
 	var count=ds_restAttdList.rowcount;
 	var num=0;
-
 	
 	for(var i=0; i<count; i++){
 		var status=ds_restAttdList.getColumn(i,"STATUS");
 		if(status==1){
 			ds_restAttdList.setColumn(i,"APPLOVAL_STATUS","승인");
 			ds_restAttdList.setColumn(i,"REJECT_CAUSE","");
-			ds_restAttdList.setColumn(i,"STATUS","update");
 			
 			num++;
 		     } 
@@ -228,7 +226,6 @@ function Tab00_tabpage1_cancelBtn_onclick(obj:Button,  e:ClickEventInfo)
 	    if(status==1){
 				ds_restAttdList.setColumn(i,"APPLOVAL_STATUS","승인취소");
 				ds_restAttdList.setColumn(i,"REJECT_CAUSE","");
-				ds_restAttdList.setColumn(i,"STATUS","update");
 				
 				num++;
 	   }
@@ -251,7 +248,6 @@ function Tab00_tabpage1_rejectBtn_onclick(obj:Button,  e:ClickEventInfo)
 			if(status==1){
 				ds_restAttdList.setColumn(i,"APPLOVAL_STATUS","반려");
 				ds_restAttdList.setColumn(i,"REJECT_CAUSE","");
-				ds_restAttdList.setColumn(i,"STATUS","update");
 				
 				num++;
 			}
@@ -265,6 +261,13 @@ function Tab00_tabpage1_rejectBtn_onclick(obj:Button,  e:ClickEventInfo)
 //확정 
 function Tab00_tabpage1_updateBtn_onclick(obj:Button,  e:ClickEventInfo)
 {
+	var count= ds_restAttdList.rowcount;
+	for(var i=0;i<count;i++){
+		var status=ds_restAttdList.getColumn(i,"STATUS");
+			if(status==1){
+				ds_restAttdList.setColumn(i,"STATUS","update");
+			}
+	}
 	transaction(
 				"modifyID"
 				,"svcAttendance::modifyRestAttdList"
