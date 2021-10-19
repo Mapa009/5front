@@ -69,11 +69,14 @@
           <Column id="MONTHLY_LEAVE" type="INT" size="256"/>
           <Column id="REMAINING_HOLIDAY" type="INT" size="256"/>
           <Column id="FINALIZE_STATUS" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
     <Script type="xscript4.0"><![CDATA[include "lib::commDate.xjs";
 
+var dateData;
+var rposition;
 //조회하기버튼
 function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 {
@@ -114,7 +117,6 @@ function fn_callback(trID,ErrorCode,ErrorMsg){
          var monthlyHoliday = ds_annualVacation.getColumn(i, "MONTHLY_LEAVE");
             var remainingHoliday = ds_annualVacation.getColumn(i, "REMAINING_HOLIDAY");
             var finalizeStatus = ds_annualVacation.getColumn(i, "FINALIZE_STATUS");
-         
           trace(empCode+' , '+empName+' :: '+applyYearMonth+' , '+afternoonOff+' , '+monthlyHoliday);
          trace(remainingHoliday+' , '+finalizeStatus);
          
@@ -123,9 +125,9 @@ function fn_callback(trID,ErrorCode,ErrorMsg){
          ds_annualVacation.setColumn(i, "APPLY_YEAR_MONTH" , applyYearMonth);
          ds_annualVacation.setColumn(i, "AFTERNOON_OFF" , addZeros(afternoonOff, 1));
          ds_annualVacation.setColumn(i, "MONTHLY_LEAVE" , addZeros(monthlyHoliday, 1));
-         ds_annualVacation.setColumn(i, "REMAINING_HOLIDAY" , addZeros(remainingHoliday, 2));
+         ds_annualVacation.setColumn(i, "REMAINING_HOLIDAY" , remainingHoliday);
          ds_annualVacation.setColumn(i, "FINALIZE_STATUS" , finalizeStatus);
-
+		
          }
          
           alert("조회성공"+ErrorMsg);
@@ -140,12 +142,11 @@ function Tab00_tabpage1_finalize_annualVacation_btn_onclick(obj:Button,  e:Click
    finalizeStatus=ds_annualVacation.getColumn(ds_annualVacation.rowposition,"FINALIZE_STATUS");
    if(finalizeStatus=="Y"){
       alert("이미 마감되었습니다.");
+      return;
    }
     var Size=ds_annualVacation.rowcount;
-    
-    for(var index=0;index<Size;index++){
-        ds_annualVacation.setColumn(index,"FINALIZE_STATUS","Y");
-    }
+    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"FINALIZE_STATUS","Y");
+    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"STATUS","update");
     updateAnnualVacation();
 }
 
@@ -154,7 +155,7 @@ function updateAnnualVacation(){
       transaction(
                "vacaUpdateID"
                ,"svcAttendance::modifyAnnualVacationMgtList"
-               ,"ds_annualVacation=ds_annualVacation"
+               ,"ds_annualVacation=ds_annualVacation:u"
                ,"ds_annualVacation=ds_annualVacation"
                ,""
                ,"fn_VacaUpdate_callback"
@@ -171,9 +172,9 @@ function Tab00_tabpage1_cancel_annualVacation_btn_onclick(obj:Button,  e:ClickEv
    
      var Size=ds_annualVacation.rowcount;
      
-     for(var index=0;index<Size;index++){
-       ds_annualVacation.setColumn(index,"FINALIZE_STATUS","N");
-     }
+     
+    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"FINALIZE_STATUS","N");
+    ds_annualVacation.setColumn(ds_annualVacation.rowposition,"STATUS","update");
      updateAnnualVacation();
 }
 
@@ -183,6 +184,7 @@ function fn_VacaUpdate_callback(trID,ErrorCode,ErrorMsg){
    if(trID=="vacaUpdateID"){
       if(ErrorCode!=0){
          alert("실패 :"+ErrorMsg);
+         return;
     }else {
       var count = ds_annualVacation.rowcount;
          
@@ -204,7 +206,7 @@ function fn_VacaUpdate_callback(trID,ErrorCode,ErrorMsg){
          ds_annualVacation.setColumn(i, "APPLY_YEAR_MONTH" , applyYearMonth);
          ds_annualVacation.setColumn(i, "AFTERNOON_OFF" , addZeros(afternoonOff, 1));
          ds_annualVacation.setColumn(i, "MONTHLY_LEAVE" , addZeros(monthlyHoliday, 1));
-         ds_annualVacation.setColumn(i, "REMAINING_HOLIDAY" , addZeros(remainingHoliday, 2));
+         ds_annualVacation.setColumn(i, "REMAINING_HOLIDAY" , remainingHoliday);
          ds_annualVacation.setColumn(i, "FINALIZE_STATUS" , finalizeStatus);
             
             

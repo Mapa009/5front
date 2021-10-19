@@ -152,7 +152,7 @@ function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 	}else{
 		transaction(
 					"searchID",
-					"svcAttendance::attendanceApploval.do",
+					"svcAttendance::findRestAttdListByDept",
 					"", // XPLATFORM -> 서버
 					"ds_restAttdList=ds_restAttd", //XPLATFORM <- 서버
 					"deptName='"+g_detailCodeNumber+"' startDate='"+startD+"' endDate='"+endD+"'",
@@ -267,7 +267,7 @@ function Tab00_tabpage1_updateBtn_onclick(obj:Button,  e:ClickEventInfo)
 {
 	transaction(
 				"modifyID"
-				,"svcAttendance::modifyRestAttdList.do"
+				,"svcAttendance::modifyRestAttdList"
 				,"ds_restAttd=ds_restAttdList:u"
 				,""
 				,""

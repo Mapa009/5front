@@ -28,7 +28,7 @@ function Grid00_oncelldbclick(obj:Grid, e:GridClickEventInfo)
 	var sID = gds_menu.getColumn(e.row,"MENU_CODE");
 	var sURL = gds_menu.getColumn(e.row,"MENU_URL");
 	var sTitle = gds_menu.getColumn(e.row,"MENU_NAME");
-	
+	trace(sURL);
 	if(sURL==null){
 		return;
 	}
