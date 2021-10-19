@@ -250,7 +250,7 @@ function fn_finalizecallback(trID,ErrorCode,ErrorMsg){
 }
 //마감 변경 저장 
 function updateDayAtten(){
-	ds_dayAttenMng.
+	
 	transaction(
 			"updateDayAttenID"
 			,"svcAttendance::modifyDayAttdList"

@@ -65,7 +65,7 @@ function baseSalaryManage_onload(obj:Form, e:LoadEventInfo)
 					 "baseSalaryID"
 					,"svcSalary::findBaseSalaryList"
 					,""
-					,"ds_baseSalaryList=ds_baseSalary"
+					,"ds_baseSalaryList=ds_position"
 					,""
 					,"fn_callback"
 		);
@@ -104,8 +104,8 @@ function Tab01_tabpage1_Button00_onclick(obj:Button,  e:ClickEventInfo)
 	transaction(
 				"submitID"
 				,"svcSalary::modifyBaseSalaryList"
-				,"ds_baseSalary=ds_baseSalaryList:u"
-				,"ds_baseSalaryList=ds_baseSalary"
+				,"ds_position=ds_baseSalaryList:u"
+				,"ds_baseSalaryList=ds_position"
 				,""
 				,"fn_callback"
 	);

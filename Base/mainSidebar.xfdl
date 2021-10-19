@@ -36,7 +36,7 @@ function Grid00_oncelldbclick(obj:Grid, e:GridClickEventInfo)
 	{
 		return;
 	}
-	gfn_Open(sID,sTitle,sURL);
+	gfn_Open("body",sTitle,sURL);
 }
 ]]></Script>
   </Form>
