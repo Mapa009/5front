@@ -752,7 +752,7 @@ function fn_callback(trID ,ErrorCode ,ErrorMsg){
   }
   
   
-if(trID=="searceCodeID"){ //셀클릭 콜백 
+if(trID=="searchCodeID"){ //셀클릭 콜백 
 	//if(ErrorCode!=0){
 		//alert("이미지  검색실패 : "+ErrorMsg);
 	//}else{ 
