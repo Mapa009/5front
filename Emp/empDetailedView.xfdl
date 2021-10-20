@@ -745,7 +745,7 @@ function fn_callback(trID ,ErrorCode ,ErrorMsg){
        alert("조회실패 :" +ErrorCode);
     }else{
  
-	  Tab01.tabpage1.empImg.image="URL('http://localhost/profile/"+empCode+'"."'+imgExtend+"')";  //imgImage ::= 'url('리소스 이미지')' | 'url('절대경로 이미지')' | 'url('상대경로이미지')' | 'url("''웹이미지'"')'
+	  Tab01.tabpage1.empImg.image="URL('http://localhost/profile/emp/"+empCode+'"."'+imgExtend+"')";  //imgImage ::= 'url('리소스 이미지')' | 'url('절대경로 이미지')' | 'url('상대경로이미지')' | 'url("''웹이미지'"')'
       trace("부서명검색"+empImg);
       var empImg=Tab01.tabpage1.empImg.image;
     }
@@ -759,7 +759,7 @@ if(trID=="searceCodeID"){ //셀클릭 콜백
      var empCode=ds_empList.getColumn(ds_empList.rowposition,"EMP_CODE");
      var imgExtend=ds_empList.getColumn(ds_empList.rowposition,"IMG_EXTEND");
 	imgName=empCode+imgExtend;
-	   Tab01.tabpage1.empImg.image="URL('http://localhost/profile/"+empCode+'"."'+imgExtend+"')";
+	   Tab01.tabpage1.empImg.image="URL('http://localhost/profile/emp/"+empCode+'"."'+imgExtend+"')";
 	   var empImg=Tab01.tabpage1.empImg.image;
 	   trace(empImg);
 	// }
@@ -778,7 +778,7 @@ if(trID=="searceCodeID"){ //셀클릭 콜백
 		var empCode=ds_empList.getColumn(ds_empList.rowposition,"EMP_CODE");
 		var imgExtend=ds_empList.getColumn(ds_empList.rowposition,"IMG_EXTEND");
 		
-    Tab01.tabpage1.empImg.image="URL('http://localhost/profile/"+empCode+'"."'+imgExtend+"')";
+    Tab01.tabpage1.empImg.image="URL('http://localhost/profile/emp/"+empCode+'"."'+imgExtend+"')";
     }
   }
   

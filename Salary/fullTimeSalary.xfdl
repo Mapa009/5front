@@ -276,7 +276,6 @@ function empList_oncellclick(obj:Grid, e:GridClickEventInfo)
 			trace(empcode);
 		var empName=ds_insaEmpSearch.getColumn(ds_insaEmpSearch.rowposition,"EMP_NAME"); //empName
 			trace(empName);
-				
 	 	transaction(
 					"searchAllMoney",
 					"svcSalary::selectSalary", 
