@@ -315,8 +315,16 @@ function Tab_tabpage2_delete_restAttd_Btn_onclick(obj:Button,  e:ClickEventInfo)
 	for(var i=0; i<count; i++){
 		var STATUS=ds_searchRestAttd.getColumn(i,"STATUS");
 		
-		if(STATUS==1){			
-		transaction(
+		if(STATUS=="1"){
+				    num++;
+		}
+		
+	}
+		if(num==0){
+		 alert("삭제할 행이 없습니다.");
+		 return;
+		}
+	transaction(
 					"deleteAtteID",
 					"svcAttendance::removeRestAttdList",
 					"ds_restAttd=ds_searchRestAttd:u",
@@ -324,13 +332,6 @@ function Tab_tabpage2_delete_restAttd_Btn_onclick(obj:Button,  e:ClickEventInfo)
 					"",
 					"fn_callback"
 					);
-				    num++;
-		}
-	}
-		if(num==0){
-		 alert("삭제할 행이 없습니다.");
-		 return;
-	}
 }
 
 

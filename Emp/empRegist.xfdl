@@ -33,9 +33,15 @@
         <MaskEdit id="txt_number" taborder="3" mask="###-####-####" position2="absolute l:648 w:188 t:441 h:27" positiontype="position2" style="align:center;font:나눔고딕,9;" type="string"/>
         <Button id="Button04" taborder="2" text="사진 저장하기" position2="absolute l:578 w:140 t:232 h:23" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9;" onclick="Button04_onclick"/>
         <ImageViewer id="empImg" taborder="1" position2="absolute l:314 w:241 t:153 h:132" positiontype="position2" onclick="empImg_onclick"/>
-        <Button id="regist_btn" taborder="18" text="등록" position2="absolute l:444 w:63 t:595 h:29" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9,bold;" onclick="regist_btn_onclick"/>
-        <Button id="cancel_btn" taborder="0" text="취소" position2="absolute l:534 w:69 t:595 h:28" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9,bold;" onclick="cancel_btn_onclick"/>
+        <Button id="regist_btn" taborder="18" text="등록" position2="absolute l:625 w:63 t:616 h:29" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9,bold;" onclick="regist_btn_onclick"/>
+        <Button id="cancel_btn" taborder="0" text="취소" position2="absolute l:816 w:69 t:616 h:28" positiontype="position2" style="background:#5d5d5dff;color:white;font:나눔고딕,9,bold;" onclick="cancel_btn_onclick"/>
         <Static id="Static12" text="사원등록" position2="absolute l:314 w:396 t:56 h:60" positiontype="position2" style="background:#eaeaeaff;border:3px solid #5d5d5dff ;color:#5d5d5dff;align:center;font:나눔고딕,14,bold;"/>
+        <Static id="Static13" text="고용형태" position2="absolute l:140 w:100 t:600 h:28" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+        <Static id="Static14" text="호봉" position2="absolute l:542 w:100 t:559 h:28" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;"/>
+        <Static id="Static15" position2="absolute l:140 w:100 t:560 h:28" positiontype="position2" style="background:#f8f8f8ff;border:3px solid #b1b5b9b3 ;align:center;font:나눔고딕,9,bold;" text="직종고용"/>
+        <Edit id="occupation" taborder="1" oneditclick="occupation_oneditclick" position2="absolute l:247 w:189 t:561 h:27" positiontype="position2" style="align:center;font:나눔고딕,9;"/>
+        <Edit id="empType" taborder="1" oneditclick="empType_oneditclick" position2="absolute l:247 w:189 t:600 h:27" positiontype="position2" style="align:center;font:나눔고딕,9;"/>
+        <Edit id="hobong" taborder="1" oneditclick="hobong3_oneditclick" position2="absolute l:648 w:189 t:559 h:27" positiontype="position2" style="align:center;font:나눔고딕,9;"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -54,6 +60,9 @@
           <Column id="POSITION" type="STRING" size="256"/>
           <Column id="DEPT_NAME" type="STRING" size="256"/>
           <Column id="IMG_EXTEND" type="STRING" size="256"/>
+          <Column id="HOBONG" type="STRING" size="256"/>
+          <Column id="OCCUPATION" type="STRING" size="256"/>
+          <Column id="EMPLOYMENT" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <FileDialog id="FileDialog" filter="All(*.*)|*.*|" filterindex="0" defaultextension="false"/>
@@ -279,6 +288,9 @@ if(empImgName==null||empImgFile==null){alert("사진을 등록하여주세요.")
 }if(txt_gend.value==null){alert("성별을 선택해주세요."); return;
 }if(txt_birth.value==null){alert("생년월일을 입력해주세요."); return;
 }if(txt_lasc.value==null){alert("최종학력을 선택해주세요."); return;
+}if(hobong.value==null){alert("호봉을 선택해주세요."); return;
+}if(occupation.value==null){alert("직종을 선택해주세요."); return;
+}if(empType.value==null){alert("고용을 선택해주세요."); return;
 }else{
 
 transaction(
@@ -339,6 +351,57 @@ function cancel_btn_onclick(obj:Button,  e:ClickEventInfo)
 function empImg_onclick(obj:ImageViewer,  e:ClickEventInfo)
 {
 	
+}
+
+function hobong3_oneditclick(obj:Edit,  e:EditClickEventInfo)
+{
+	g_codeNumber="CO-12";
+	
+	 dialog(   "detailCodeList",  
+			   "Base::codeDialog.xfdl",   
+			   MainFrame,   
+               null,  
+			   "", 
+			   650,  
+			   350 
+   );
+	
+	hobong.value=g_detailCodeName; 
+	ds_empRegist.setColumn(0,"HOBONG",hobong.value);
+}
+
+function occupation_oneditclick(obj:Edit,  e:EditClickEventInfo)
+{
+	g_codeNumber="CO-03";
+	
+	 dialog(   "detailCodeList",  
+			   "Base::codeDialog.xfdl",   
+			   MainFrame,   
+               null,  
+			   "", 
+			   650,  
+			   350 
+   );
+	
+	occupation.value=g_detailCodeName; 
+	ds_empRegist.setColumn(0,"OCCUPATION",occupation.value);
+}
+
+function empType_oneditclick(obj:Edit,  e:EditClickEventInfo)
+{
+	g_codeNumber="CO-05";
+	
+	 dialog(   "detailCodeList",  
+			   "Base::codeDialog.xfdl",   
+			   MainFrame,   
+               null,  
+			   "", 
+			   650,  
+			   350 
+   );
+	
+	empType.value=g_detailCodeName; 
+	ds_empRegist.setColumn(0,"EMPLOYMENT",empType.value);
 }
 ]]></Script>
   </Form>

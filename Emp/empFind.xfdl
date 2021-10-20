@@ -129,7 +129,7 @@ function Grid00_oncellclick(obj:Grid, e:GridClickEventInfo)
 	  trace(empCode);
       var imgExtend =ds_emp.getColumn(ds_emp.rowposition,"IMG_EXTEND");
       trace(imgExtend);
-	  empImage.image="URL('http://localhost/profile/"+empCode+'"."'+imgExtend+"')"; 
+	  empImage.image="URL('http://localhost/profile/emp/"+empCode+'"."'+imgExtend+"')"; 
       var empImg=empImage.image;
       trace("셀클릭"+empImg);
 }

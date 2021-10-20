@@ -221,6 +221,7 @@ function fn_callback(trID, ErrorCode, ErrorMsg)
 	if(trID=="dayAttendanceID"){
 		if(ErrorCode==-1){
 			alert(" 추가실패 "+ErrorMsg);
+			form.reload();
 		}else{		
 		alert("기록완료");
   		Tab00_tabpage1_applyDay_onchanged();
