@@ -281,7 +281,7 @@ function Tab1_monthSalary_finalizeBtn_onclick(obj:Button,  e:ClickEventInfo)
 	
   	transaction("finalizeID",
   				"svcSalary::modifyMonthSalary",
-  				"ds_MonthSalary=ds_MonthSalary",
+  				"ds_MonthSalary=ds_MonthSalary ",
   				"",
   				"",
   				"finalize_callback");

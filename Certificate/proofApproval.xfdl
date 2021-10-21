@@ -100,6 +100,7 @@
           <Column id="EMP_NAME" type="STRING" size="256"/>
           <Column id="APPLOVALSTATUS" type="STRING" size="256"/>
           <Column id="STATUS" type="STRING" size="256"/>
+          <Column id="SEQ_NO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -141,7 +142,7 @@ function Tab00_tabpage1_selectBtn_onclick(obj:Button,  e:ClickEventInfo)
 	
 	transaction(
 				"selectID"
-				,"svcCertificate::proofApproval.do"
+				,"svcCertificate::findProofAttdListByDept"
 				,""
 				,"ds_approvalList=ds_proof"
 				,"deptName='"+deptName+"' startDate='"+startDate+"' endDate='"+endDate+"'"
@@ -245,7 +246,7 @@ function Tab00_tabpage1_rejectBtn_onclick(obj:Button,  e:ClickEventInfo)
 function Tab00_tabpage1_confirmBtn_onclick(obj:Button,  e:ClickEventInfo){
 	transaction(
 				"confirmID"
-				,"svcCertificate::proofConfirm.do"
+				,"svcCertificate::modifyProofList"
 				,"ds_proof=ds_approvalList:u"
 				,""
 				,""
