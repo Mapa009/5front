@@ -218,6 +218,7 @@
           <Column id="DEDUCTION_CODE" type="STRING" size="256"/>
           <Column id="DEDUCTION_NAME" type="STRING" size="256"/>
           <Column id="PRICE" type="STRING" size="256"/>
+          <Column id="MONTH_DEDUCTION_CODE" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -284,7 +285,7 @@ function Tab1_monthSalary_finalizeBtn_onclick(obj:Button,  e:ClickEventInfo)
   				"",
   				"",
   				"finalize_callback");
- 		}
+ }
  		
 //마감취소 버튼
 function Tab1_monthSalary_cancelBtn_onclick(obj:Button,  e:ClickEventInfo)
