@@ -249,10 +249,10 @@ var yearMonth =year+'-'+month;
 
 	 	transaction(
 					"searchEmpCode",
-					"svcEmp::list",  
+					"svcEmp::listByMonthSal",  
 					"",
 					"ds_insaEmpSearch=gds_emp",
-					"value=전체부서",
+					"value=월급",
 					"fn_callback"
 					);
 }

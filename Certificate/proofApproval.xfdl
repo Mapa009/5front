@@ -260,6 +260,7 @@ function fn_confirmcallback(trID,ErrorCode,ErrorMsg){
 			alert("확정 실패"+ErrorMsg);
 		}else{
 			alert("성공");
+			Edit05.value=''
 		}
 	}
 }
