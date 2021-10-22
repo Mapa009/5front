@@ -64,11 +64,11 @@
                           <Cell col="3" displaytype="normal" style="font:나눔고딕,9;" text="bind:BASIC_WORK_DAYS"/>
                           <Cell col="4" displaytype="normal" style="font:나눔고딕,9;" text="bind:WEEKDAY_WORK_DAYS"/>
                           <Cell col="5" displaytype="normal" style="font:나눔고딕,9;" text="bind:BASIC_WORK_HOUR" mask="###시간" maskchar="00:00"/>
-                          <Cell col="6" displaytype="normal" style="font:나눔고딕,9;" text="bind:WORK_HOUR" mask="0##시간##분" maskchar="00:00"/>
-                          <Cell col="7" displaytype="normal" style="font:나눔고딕,9;" text="bind:OVER_WORK_HOUR" mask="0#시간##분" maskchar="00:00"/>
-                          <Cell col="8" displaytype="normal" style="font:나눔고딕,9;" text="bind:NIGHT_WORK_HOUR" mask="0#시간##분" maskchar="00:00"/>
+                          <Cell col="6" displaytype="normal" style="font:나눔고딕,9;" text="bind:WORK_HOUR" mask="###시간##분" maskchar="00:00"/>
+                          <Cell col="7" displaytype="normal" style="font:나눔고딕,9;" text="bind:OVER_WORK_HOUR" mask="##시간##분" maskchar="00:00"/>
+                          <Cell col="8" displaytype="normal" style="font:나눔고딕,9;" text="bind:NIGHT_WORK_HOUR" mask="##시간##분" maskchar="00:00"/>
                           <Cell col="9" displaytype="normal" style="font:나눔고딕,9;" text="bind:HOLIDAY_WORK_DAYS"/>
-                          <Cell col="10" displaytype="normal" style="font:나눔고딕,9;" text="bind:HOLIDAY_WORK_HOUR" mask="0#시간##분" maskchar="00:00"/>
+                          <Cell col="10" displaytype="normal" style="font:나눔고딕,9;" text="bind:HOLIDAY_WORK_HOUR" mask="##시간##분" maskchar="00:00"/>
                           <Cell col="11" displaytype="normal" style="font:나눔고딕,9;" text="bind:LATE_DAYS"/>
                           <Cell col="12" displaytype="normal" style="font:나눔고딕,9;" text="bind:ABSENT_DAYS"/>
                           <Cell col="13" displaytype="normal" style="font:나눔고딕,9;" text="bind:HALF_HOLIDAYS"/>
@@ -109,7 +109,9 @@
         </ColumnInfo>
       </Dataset>
     </Objects>
-    <Script type="xscript4.0"><![CDATA[ function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
+    <Script type="xscript4.0"><![CDATA[include "lib::commLib.xjs";
+
+ function Tab00_tabpage1_searchBtn_onclick(obj:Button,  e:ClickEventInfo)
 {
 	if(Tab00.tabpage1.CalendarBtn.value==null){
 		alert("조회할 날짜를 입력하세요.");
